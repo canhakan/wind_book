@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "Wind Power Forecasting - Dimension Reduction"
+author: "Can Hakan Dagidir"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
