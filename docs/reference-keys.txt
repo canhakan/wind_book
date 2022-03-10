@@ -1,3 +1,11 @@
-down-the-rabbit-hole
-the-pool-of-tears
-a-caucus-race-and-a-long-tale
+results
+full-models
+dimension-reduction
+report-incomplete
+motivation
+data
+new-features
+models
+dimension-reduction-methods
+full-models-incomplete
+dimension-reduction-incomplete

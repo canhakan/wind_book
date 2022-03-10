@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Wind Power Forecasting - Dimension Reduction</title>
-  <meta name="description" content="Page not found | Wind Power Forecasting - Dimension Reduction" />
+  <title>Chapter 2 Report (incomplete) | Wind Power Forecasting - Dimension Reduction</title>
+  <meta name="description" content="Chapter 2 Report (incomplete) | Wind Power Forecasting - Dimension Reduction" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Wind Power Forecasting - Dimension Reduction" />
+  <meta property="og:title" content="Chapter 2 Report (incomplete) | Wind Power Forecasting - Dimension Reduction" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Wind Power Forecasting - Dimension Reduction" />
+  <meta name="twitter:title" content="Chapter 2 Report (incomplete) | Wind Power Forecasting - Dimension Reduction" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="full-models-incomplete.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -171,19 +171,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="report-incomplete" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Report (incomplete)</h1>
+<div id="motivation" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Motivation</h2>
+<p>We want to analyse and compare Linear/Nonlinear and Spatial/Temporal/Spatio-Temporal relationships of windspeed data and electricity production from a nearby wind turbine.</p>
+</div>
+<div id="data" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Data</h2>
+<p>We will use windspeed data from 6 different stations:</p>
+<p>note: cmd+option+i</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="report-incomplete.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data_explainer)</span></code></pre></div>
+<pre><code>##    region locations time_instances
+## 1: Aliaga     3x3=9          33130
+## 2:  Bares    4x4=16          33240
+## 3:  Dinar    4x4=16          33264
+## 4: Geycek    4x4=16          24096
+## 5:   Soke    4x4=16          33240
+## 6:   Soma    3x4=12          33124</code></pre>
+</div>
+<div id="new-features" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> New Features</h2>
+<p>From these data, we create lagged version of features for spatio-temporality. Also we create powered version of features for nonlinearity. etc..</p>
+<p>In total we will have 4 different datasets. We will compare them to see the importance of temporal and nonlinear features.</p>
+<p>Also these datasets will be of use in comparing dimension reduction techniques.</p>
+<ol style="list-style-type: decimal">
+<li><p>Base Data</p></li>
+<li><p>Lagged Data</p></li>
+<li><p>Powered Data: …</p></li>
+<li><p>Lagged and Powered Data: …</p></li>
+</ol>
+</div>
+<div id="models" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Models</h2>
+<p>Here are the results. One can see that in all 6 stations the performance order of the data formats are same.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="report-incomplete.html#cb13-1" aria-hidden="true" tabindex="-1"></a>results[<span class="fu">order</span>(station)]</span></code></pre></div>
+<pre><code>##     station            model train_error test_error
+##  1:  aliaga             base   15.749330  15.779370
+##  2:  aliaga           lagged   15.083126  15.381750
+##  3:  aliaga          powered   12.968082  13.276253
+##  4:  aliaga lagged + powered   12.462900  13.259591
+##  5:   bares             base    8.072013   8.647386
+##  6:   bares           lagged    7.802838   8.443502
+##  7:   bares          powered    7.163767   7.395969
+##  8:   bares lagged + powered    6.926500   7.296728
+##  9:   dinar             base   22.303159  25.021587
+## 10:   dinar           lagged   21.878399  24.637237
+## 11:   dinar          powered   20.723720  24.433443
+## 12:   dinar lagged + powered   20.082280  24.255884
+## 13:  geycek             base   19.631056  19.432637
+## 14:  geycek           lagged   19.028241  18.911000
+## 15:  geycek          powered   17.656956  17.890285
+## 16:  geycek lagged + powered   16.843447  17.537223
+## 17:    soke             base    7.387029   7.993442
+## 18:    soke           lagged    7.164470   7.851381
+## 19:    soke          powered    6.767630   7.575407
+## 20:    soke lagged + powered    6.535189   7.606085
+## 21:    soma             base   14.231200  16.079155
+## 22:    soma           lagged   13.508555  15.245921
+## 23:    soma          powered   12.368493  14.387454
+## 24:    soma lagged + powered   11.674458  13.696653
+##     station            model train_error test_error</code></pre>
+<p>lagged+powered &gt;&gt; powered &gt;&gt; lagged &gt;&gt; base</p>
+</div>
+<div id="dimension-reduction-methods" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Dimension Reduction Methods</h2>
+<p>We can see that adding new features increases the dimension very fast. We should do something about it.</p>
+<ol style="list-style-type: decimal">
+<li><p>Principal Component Analysis (PCA)</p></li>
+<li><p>Kronecker PCA</p></li>
+<li><p>Sparse Kronecker PCA</p></li>
+</ol>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="full-models-incomplete.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -214,7 +282,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/canhakan/wind_book/edit/master/%s",
+"link": "https://github.com/canhakan/wind_book/edit/master/02-Everything.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -222,7 +290,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/canhakan/wind_book/blob/master/%s",
+"link": "https://github.com/canhakan/wind_book/blob/master/02-Everything.Rmd",
 "text": null
 },
 "download": null,
