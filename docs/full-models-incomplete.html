@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="full-models-incomplete" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Full Models (incomplete)</h1>
 <p>Here we will analyse the effects of creating nonlinear and/or temporal features.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="full-models-incomplete.html#cb35-1" aria-hidden="true" tabindex="-1"></a>results[<span class="fu">order</span>(station)]</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="full-models-incomplete.html#cb36-1" aria-hidden="true" tabindex="-1"></a>results[<span class="fu">order</span>(station)]</span></code></pre></div>
 <pre><code>##     station            model train_error test_error
 ##  1:  aliaga             base   15.713488  15.795947
 ##  2:  aliaga           lagged   15.076114  15.386407
@@ -213,16 +213,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 23:    soma          powered   12.426015  14.355621
 ## 24:    soma lagged + powered   11.644277  13.750055
 ##     station            model train_error test_error</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="full-models-incomplete.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results) <span class="sc">+</span></span>
-<span id="cb37-2"><a href="full-models-incomplete.html#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> level_order, <span class="at">y =</span> test_error, <span class="at">color =</span>  station)) <span class="sc">+</span> </span>
-<span id="cb37-3"><a href="full-models-incomplete.html#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Dark2&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb37-4"><a href="full-models-incomplete.html#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Models&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Mean Absolute Error&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Full Models&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Test Error Comparison&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="full-models-incomplete.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results) <span class="sc">+</span></span>
-<span id="cb38-2"><a href="full-models-incomplete.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> level_order, <span class="at">y =</span> train_error, <span class="at">color =</span>  station)) <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="full-models-incomplete.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> level_order, <span class="at">y =</span> test_error, <span class="at">color =</span>  station)) <span class="sc">+</span> </span>
 <span id="cb38-3"><a href="full-models-incomplete.html#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Dark2&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb38-4"><a href="full-models-incomplete.html#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Models&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Mean Absolute Error&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Full Models&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Train Error Comparison&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<span id="cb38-4"><a href="full-models-incomplete.html#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Models&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Mean Absolute Error&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Full Models&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Test Error Comparison&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="full-models-incomplete.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results) <span class="sc">+</span></span>
+<span id="cb39-2"><a href="full-models-incomplete.html#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> level_order, <span class="at">y =</span> train_error, <span class="at">color =</span>  station)) <span class="sc">+</span> </span>
+<span id="cb39-3"><a href="full-models-incomplete.html#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Dark2&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb39-4"><a href="full-models-incomplete.html#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Models&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Mean Absolute Error&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Full Models&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Train Error Comparison&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-29-2.png" width="672" /></p>
 
 </div>
             </section>

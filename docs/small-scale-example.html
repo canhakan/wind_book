@@ -244,16 +244,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-2"><a href="small-scale-example.html#cb5-2" aria-hidden="true" tabindex="-1"></a>pred.test1 <span class="ot">=</span> <span class="fu">predict</span>(dfit1, <span class="fu">as.matrix</span>(dte1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]), <span class="at">s =</span> <span class="st">&quot;lambda.1se&quot;</span>)</span>
 <span id="cb5-3"><a href="small-scale-example.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(dfit1,<span class="at">type=</span><span class="st">&quot;coef&quot;</span>) <span class="co"># coefficients</span></span>
 <span id="cb5-4"><a href="small-scale-example.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 x 1 sparse Matrix of class &quot;dgCMatrix&quot;</span></span>
-<span id="cb5-5"><a href="small-scale-example.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">##              lambda.1se</span></span>
-<span id="cb5-6"><a href="small-scale-example.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept) -13.8929470</span></span>
-<span id="cb5-7"><a href="small-scale-example.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## loc1         -2.4894253</span></span>
-<span id="cb5-8"><a href="small-scale-example.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## loc2         -0.8886814</span></span>
-<span id="cb5-9"><a href="small-scale-example.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">## loc3         -1.0012055</span></span>
-<span id="cb5-10"><a href="small-scale-example.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">## loc4         10.6924342</span></span>
+<span id="cb5-5"><a href="small-scale-example.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">##             lambda.1se</span></span>
+<span id="cb5-6"><a href="small-scale-example.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept) -13.913447</span></span>
+<span id="cb5-7"><a href="small-scale-example.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## loc1         -2.136017</span></span>
+<span id="cb5-8"><a href="small-scale-example.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## loc2         -1.279383</span></span>
+<span id="cb5-9"><a href="small-scale-example.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">## loc3         -1.319780</span></span>
+<span id="cb5-10"><a href="small-scale-example.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">## loc4         11.030869</span></span>
 <span id="cb5-11"><a href="small-scale-example.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Train Error: &quot;</span>, <span class="fu">min</span>(dfit1<span class="sc">$</span>cvup)), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># train error</span></span>
-<span id="cb5-12"><a href="small-scale-example.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Train Error:  16.1500866436713&quot;</span></span>
+<span id="cb5-12"><a href="small-scale-example.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Train Error:  16.08646661956&quot;</span></span>
 <span id="cb5-13"><a href="small-scale-example.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Test Error: &quot;</span>, <span class="fu">mean</span>(<span class="fu">abs</span>(pred.test1 <span class="sc">-</span> dte1<span class="sc">$</span>production))), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># test error</span></span>
-<span id="cb5-14"><a href="small-scale-example.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Test Error:  13.4460843352399&quot;</span></span></code></pre></div>
+<span id="cb5-14"><a href="small-scale-example.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Test Error:  13.4394665091161&quot;</span></span></code></pre></div>
 <p>We can see that our model does not only depend on the “intercept” also we have seen that test error is not too bad (actually it is better than the train error which we will discuss a little later.)</p>
 <p>Before looking at the all results, here is our workflow:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="small-scale-example.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit</span></span>
@@ -586,7 +586,7 @@ E_k = \frac{1}{2} m v^2 \text{, where $m$ is mass and $v$ is velocity.}
 ## 4:  aliaga lagged + powered    15.61383   13.39245
 ## 5:  aliaga          poly(2)    15.28435   13.54719
 ## 6:  aliaga    poly(2) &gt; lag    15.06138   13.35653
-## 7:  aliaga    lag &gt; poly(2)    14.91107   13.36865</code></pre>
+## 7:  aliaga    lag &gt; poly(2)    14.90441   13.37074</code></pre>
 <p>We were able to reduce our error, once more. This is a good motivation for us to move on. Before finalizing this section let’s try one more thing.</p>
 </div>
 <div id="polynomial-of-degree-3" class="section level3" number="2.1.9">
@@ -638,6 +638,12 @@ E_k = \frac{1}{2} m v^2 \text{, where $m$ is mass and $v$ is velocity.}
 ## 42:    soma          poly(3)   12.364350  11.836208
 ##     station            model train_error test_error</code></pre>
 <p>Wow! Our poly(3) models are outperforming poly(2)&gt;lag models. However combination of lag and poly(3) would again create dimension problems. So we stop here.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="small-scale-example.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dlevel_order is factorized version of &quot;models&quot;. needed for ordered model names</span></span>
+<span id="cb31-2"><a href="small-scale-example.html#cb31-2" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">=</span> <span class="fu">ggplot</span>(dresults) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="small-scale-example.html#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dlevel_order, <span class="at">y =</span> train_error, <span class="at">color =</span> station)) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="small-scale-example.html#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Models&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Mean Absolute Error&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Final Results&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Error Comparison&quot;</span>)</span>
+<span id="cb31-5"><a href="small-scale-example.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <div id="final-words" class="section level3" number="2.1.10">
 <h3><span class="header-section-number">2.1.10</span> Final Words</h3>

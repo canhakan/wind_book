@@ -193,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.2</span> Data</h2>
 <p>We will use windspeed data from 6 different stations:</p>
 <p>note: cmd+option+i</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="report-incomplete.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data_explainer)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="report-incomplete.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data_explainer)</span></code></pre></div>
 <pre><code>##    region locations time_instances
 ## 1: Aliaga     3x3=9          33130
 ## 2:  Bares    4x4=16          33240
@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="models" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Models</h2>
 <p>Here are the results. One can see that in all 6 stations the performance order of the data formats are same.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="report-incomplete.html#cb33-1" aria-hidden="true" tabindex="-1"></a>results[<span class="fu">order</span>(station)]</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="report-incomplete.html#cb34-1" aria-hidden="true" tabindex="-1"></a>results[<span class="fu">order</span>(station)]</span></code></pre></div>
 <pre><code>##     station            model train_error test_error
 ##  1:  aliaga             base   15.713488  15.795947
 ##  2:  aliaga           lagged   15.076114  15.386407
