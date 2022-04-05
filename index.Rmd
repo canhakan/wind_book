@@ -8,7 +8,7 @@ site: bookdown::bookdown_site
 
 Contents are removed for a while.
 
-Check [here](reduced-size.html)
+Check [here](small-scale-example.html)
 
 
 <!-- # RESULTS -->

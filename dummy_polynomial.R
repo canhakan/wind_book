@@ -94,8 +94,6 @@ error.train4 = min(fit.poly4$cvup)
 error.train5 = min(fit.poly5$cvup)
 error.train6 = min(fit.poly6$cvup)
 
-
-
 pred.test1 = predict(fit.poly1, as.matrix(dte_poly1[,-c(1:3)]), s = "lambda.1se")
 pred.test2 = predict(fit.poly2, as.matrix(dte_poly2[,-c(1:3)]), s = "lambda.1se")
 pred.test3 = predict(fit.poly3, as.matrix(dte_poly3[,-c(1:3)]), s = "lambda.1se")
@@ -177,12 +175,12 @@ error.test4 = mean(abs(pred.test4 - dte_polylag4$production))
 error.test5 = mean(abs(pred.test5 - dte_polylag5$production))
 error.test6 = mean(abs(pred.test6 - dte_polylag6$production))
 
-res1 = data.table(station = "aliaga", model = "poly>lag(2)", train_error = error.train1, test_error = error.test1)
-res2 = data.table(station = "bares",  model = "poly>lag(2)", train_error = error.train2, test_error = error.test2)
-res3 = data.table(station = "dinar",  model = "poly>lag(2)", train_error = error.train3, test_error = error.test3)
-res4 = data.table(station = "geycek", model = "poly>lag(2)", train_error = error.train4, test_error = error.test4)
-res5 = data.table(station = "soke",   model = "poly>lag(2)", train_error = error.train5, test_error = error.test5)
-res6 = data.table(station = "soma",   model = "poly>lag(2)", train_error = error.train6, test_error = error.test6)
+res1 = data.table(station = "aliaga", model = "poly(2) > lag", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "poly(2) > lag", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "poly(2) > lag", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "poly(2) > lag", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "poly(2) > lag", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "poly(2) > lag", train_error = error.train6, test_error = error.test6)
 
 dresults = rbind(dresults, res1)
 dresults = rbind(dresults, res2)
@@ -199,21 +197,95 @@ dresults[order(station)]
 
 # *create Lag->Poly data --------------------------------------------------
 dt_lagpoly1 = cbind(dt_lag1[,1:3], polym(as.matrix(dt_lag1[,-c(1:3)]),degree = 2, raw = TRUE))
-dt_lagpoly2 = cbind(dt_lag2[,1:3], polym(as.matrix(dt_lag2[,-c(1:3)]),degree = 2, raw = TRUE))
-dt_lagpoly3 = cbind(dt_lag3[,1:3], polym(as.matrix(dt_lag3[,-c(1:3)]),degree = 2, raw = TRUE))
-dt_lagpoly4 = cbind(dt_lag4[,1:3], polym(as.matrix(dt_lag4[,-c(1:3)]),degree = 2, raw = TRUE))
-dt_lagpoly5 = cbind(dt_lag5[,1:3], polym(as.matrix(dt_lag5[,-c(1:3)]),degree = 2, raw = TRUE))
-dt_lagpoly6 = cbind(dt_lag6[,1:3], polym(as.matrix(dt_lag6[,-c(1:3)]),degree = 2, raw = TRUE))
+# dt_lagpoly2 = cbind(dt_lag2[,1:3], polym(as.matrix(dt_lag2[,-c(1:3)]),degree = 2, raw = TRUE))
+# dt_lagpoly3 = cbind(dt_lag3[,1:3], polym(as.matrix(dt_lag3[,-c(1:3)]),degree = 2, raw = TRUE))
+# dt_lagpoly4 = cbind(dt_lag4[,1:3], polym(as.matrix(dt_lag4[,-c(1:3)]),degree = 2, raw = TRUE))
+# dt_lagpoly5 = cbind(dt_lag5[,1:3], polym(as.matrix(dt_lag5[,-c(1:3)]),degree = 2, raw = TRUE))
+# dt_lagpoly6 = cbind(dt_lag6[,1:3], polym(as.matrix(dt_lag6[,-c(1:3)]),degree = 2, raw = TRUE))
 
 dte_lagpoly1 = cbind(dte_lag1[,1:3], polym(as.matrix(dte_lag1[,-c(1:3)]),degree = 2, raw = TRUE))
-dte_lagpoly2 = cbind(dte_lag2[,1:3], polym(as.matrix(dte_lag2[,-c(1:3)]),degree = 2, raw = TRUE))
-dte_lagpoly3 = cbind(dte_lag3[,1:3], polym(as.matrix(dte_lag3[,-c(1:3)]),degree = 2, raw = TRUE))
-dte_lagpoly4 = cbind(dte_lag4[,1:3], polym(as.matrix(dte_lag4[,-c(1:3)]),degree = 2, raw = TRUE))
-dte_lagpoly5 = cbind(dte_lag5[,1:3], polym(as.matrix(dte_lag5[,-c(1:3)]),degree = 2, raw = TRUE))
-dte_lagpoly6 = cbind(dte_lag6[,1:3], polym(as.matrix(dte_lag6[,-c(1:3)]),degree = 2, raw = TRUE))
+# dte_lagpoly2 = cbind(dte_lag2[,1:3], polym(as.matrix(dte_lag2[,-c(1:3)]),degree = 2, raw = TRUE))
+# dte_lagpoly3 = cbind(dte_lag3[,1:3], polym(as.matrix(dte_lag3[,-c(1:3)]),degree = 2, raw = TRUE))
+# dte_lagpoly4 = cbind(dte_lag4[,1:3], polym(as.matrix(dte_lag4[,-c(1:3)]),degree = 2, raw = TRUE))
+# dte_lagpoly5 = cbind(dte_lag5[,1:3], polym(as.matrix(dte_lag5[,-c(1:3)]),degree = 2, raw = TRUE))
+# dte_lagpoly6 = cbind(dte_lag6[,1:3], polym(as.matrix(dte_lag6[,-c(1:3)]),degree = 2, raw = TRUE))
 
-dim(dt_lag1)
-dim(dt_lag2)
+
+fit.lagpoly1 = cv.glmnet(x = as.matrix(dt_lagpoly1[,-c(1:3)]), y = dt_lagpoly1$production, type.measure = 'mae')
+error.train1 = min(fit.lagpoly1$cvup)
+pred.test1 = predict(fit.lagpoly1, as.matrix(dte_lagpoly1[,-c(1:3)]), s = "lambda.1se")
+error.test1 = mean(abs(pred.test1 - dte_lagpoly1$production))
+res1 = data.table(station = "aliaga", model = "poly>lag(2)", train_error = error.train1, test_error = error.test1)
+res1
+dresults %>% filter(station == "aliaga")
+
+
+# Poly of degree 3 --------------------------------------------------------
+
+# *create poly data --------------------------------------------------------
+# polynomial of order 3
+dt_poly3.1 = cbind(dt1[,1:3], polym(as.matrix(dt1[,-c(1:3)]), degree = 3, raw = TRUE))
+dt_poly3.2 = cbind(dt2[,1:3], polym(as.matrix(dt2[,-c(1:3)]), degree = 3, raw = TRUE))
+dt_poly3.3 = cbind(dt3[,1:3], polym(as.matrix(dt3[,-c(1:3)]), degree = 3, raw = TRUE))
+dt_poly3.4 = cbind(dt4[,1:3], polym(as.matrix(dt4[,-c(1:3)]), degree = 3, raw = TRUE))
+dt_poly3.5 = cbind(dt5[,1:3], polym(as.matrix(dt5[,-c(1:3)]), degree = 3, raw = TRUE))
+dt_poly3.6 = cbind(dt6[,1:3], polym(as.matrix(dt6[,-c(1:3)]), degree = 3, raw = TRUE))
+
+dte_poly3.1 = cbind(dte1[,1:3], polym(as.matrix(dte1[,-c(1:3)]), degree = 3, raw = TRUE))
+dte_poly3.2 = cbind(dte2[,1:3], polym(as.matrix(dte2[,-c(1:3)]), degree = 3, raw = TRUE))
+dte_poly3.3 = cbind(dte3[,1:3], polym(as.matrix(dte3[,-c(1:3)]), degree = 3, raw = TRUE))
+dte_poly3.4 = cbind(dte4[,1:3], polym(as.matrix(dte4[,-c(1:3)]), degree = 3, raw = TRUE))
+dte_poly3.5 = cbind(dte5[,1:3], polym(as.matrix(dte5[,-c(1:3)]), degree = 3, raw = TRUE))
+dte_poly3.6 = cbind(dte6[,1:3], polym(as.matrix(dte6[,-c(1:3)]), degree = 3, raw = TRUE))
+
+# *glmnet ------------------------------------------------------------------
+fit.poly3.1 = cv.glmnet(x = as.matrix(dt_poly3.1[,-c(1:3)]), y = dt_poly3.1$production, type.measure = 'mae')
+fit.poly3.2 = cv.glmnet(x = as.matrix(dt_poly3.2[,-c(1:3)]), y = dt_poly3.2$production, type.measure = 'mae')
+fit.poly3.3 = cv.glmnet(x = as.matrix(dt_poly3.3[,-c(1:3)]), y = dt_poly3.3$production, type.measure = 'mae')
+fit.poly3.4 = cv.glmnet(x = as.matrix(dt_poly3.4[,-c(1:3)]), y = dt_poly3.4$production, type.measure = 'mae')
+fit.poly3.5 = cv.glmnet(x = as.matrix(dt_poly3.5[,-c(1:3)]), y = dt_poly3.5$production, type.measure = 'mae')
+fit.poly3.6 = cv.glmnet(x = as.matrix(dt_poly3.6[,-c(1:3)]), y = dt_poly3.6$production, type.measure = 'mae')
+
+error.train1 = min(fit.poly3.1$cvup)
+error.train2 = min(fit.poly3.2$cvup)
+error.train3 = min(fit.poly3.3$cvup)
+error.train4 = min(fit.poly3.4$cvup)
+error.train5 = min(fit.poly3.5$cvup)
+error.train6 = min(fit.poly3.6$cvup)
+
+pred.test1 = predict(fit.poly3.1, as.matrix(dte_poly3.1[,-c(1:3)]), s = "lambda.1se")
+pred.test2 = predict(fit.poly3.2, as.matrix(dte_poly3.2[,-c(1:3)]), s = "lambda.1se")
+pred.test3 = predict(fit.poly3.3, as.matrix(dte_poly3.3[,-c(1:3)]), s = "lambda.1se")
+pred.test4 = predict(fit.poly3.4, as.matrix(dte_poly3.4[,-c(1:3)]), s = "lambda.1se")
+pred.test5 = predict(fit.poly3.5, as.matrix(dte_poly3.5[,-c(1:3)]), s = "lambda.1se")
+pred.test6 = predict(fit.poly3.6, as.matrix(dte_poly3.6[,-c(1:3)]), s = "lambda.1se")
+
+error.test1 = mean(abs(pred.test1 - dte1$production))
+error.test2 = mean(abs(pred.test2 - dte2$production))
+error.test3 = mean(abs(pred.test3 - dte3$production))
+error.test4 = mean(abs(pred.test4 - dte4$production))
+error.test5 = mean(abs(pred.test5 - dte5$production))
+error.test6 = mean(abs(pred.test6 - dte6$production))
+
+res1 = data.table(station = "aliaga", model = "poly(3)", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "poly(3)", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "poly(3)", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "poly(3)", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "poly(3)", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "poly(3)", train_error = error.train6, test_error = error.test6)
+
+dresults = rbind(dresults, res1)
+dresults = rbind(dresults, res2)
+dresults = rbind(dresults, res3)
+dresults = rbind(dresults, res4)
+dresults = rbind(dresults, res5)
+dresults = rbind(dresults, res6)
+
+# dresults[order(station)]
+# dresults %>% filter(model == "poly(3)")
+# # dresults = dresults %>% filter(model != "poly(2)")
+
+
 
 
 

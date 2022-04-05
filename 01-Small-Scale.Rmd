@@ -1,24 +1,26 @@
 # Small Scale Example
 
-## Relationship between: Wind Speed and Energy Production of Wind Turbines
+**Relationship between: Wind Speed and Energy Production of Wind Turbines**
 
 ## Intro
 
-<Insert Introduction Here>
+> will insert a introduction here
+
+...
 
 We will use wind speed data from 6 locations. We want to see whether using temporal and nonlinear features improve our forecast accuracy.
 
-The questions are as follows:
+<!-- The questions are as follows: -->
 
-1. Can there be a linear model for predicting energy production using wind speed data from near stations
-2. Are temporal features from past and (forecasts) from future is useful? i.e. Lagged Data
-3. Are non-linearly derived features useful? e.g. square of wind speed
-4. Are combination of lagged and "powered" features useful?
-5. Are polynomial combination of the wind speed useful?
-6. Are lagged versions of polynomial features useful?
-7. Are polynomial combination of the lagged features useful?
+<!-- 1. Can there be a linear model for predicting energy production using wind speed data from near stations -->
+<!-- 2. Are temporal features from past and (forecasts) from future is useful? i.e. Lagged Data -->
+<!-- 3. Are non-linearly derived features useful? e.g. square of wind speed -->
+<!-- 4. Are combination of lagged and "powered" features useful? -->
+<!-- 5. Are polynomial combination of the wind speed useful? -->
+<!-- 6. Are lagged versions of polynomial features useful? -->
+<!-- 7. Are polynomial combination of the lagged features useful? -->
 
-(or)
+<!-- (or) -->
 
 The relationships that we want to analyse are as follows:
 
@@ -278,6 +280,15 @@ Just for future motivation, lets try the base model of polynomial with degree 3:
 dresults[order(station)]
 ```
 Wow! Our poly(3) models are outperforming poly(2)>lag models. However combination of lag and poly(3) would again create dimension problems. So we stop here.
+
+```{r}
+# dlevel_order is factorized version of "models". needed for ordered model names
+ggplot(dresults) +
+    geom_point(mapping = aes(x = dlevel_order, y = train_error, color = station)) +
+    labs(x = "Models", y = "Mean Absolute Error", title = "Final Results", subtitle = "Error Comparison")
+```
+
+
 
 
 ### Final Words

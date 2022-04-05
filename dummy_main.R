@@ -124,6 +124,9 @@ dfit4 = cv.glmnet(x = as.matrix(dt4[,-c(1:3)]), y = dt4$production, type.measure
 dfit5 = cv.glmnet(x = as.matrix(dt5[,-c(1:3)]), y = dt5$production, type.measure = "mae")
 dfit6 = cv.glmnet(x = as.matrix(dt6[,-c(1:3)]), y = dt6$production, type.measure = "mae")
 
+# # look at coeffs:
+# predict(dfit1,type="coef")
+
 # buna simdilik gerek yok. ama aslinda modellerin nerelerde cok hata yaptigina bakmak icin gerekli biraz
 # dpred1 = predict(dfit1, as.matrix(dt1[,4:7]),  s = "lambda.1se")
 # dpred2 = predict(dfit2, as.matrix(dt2[,4:12]), s = "lambda.1se")
@@ -327,6 +330,18 @@ dresults = rbind(dresults, res6)
 dresults[order(station)]
 
 
+
+
+
+# ggplot icin dresults2 ---------------------------------------------------
+
+dresults2 = dresults
+
+dlevel_order <- factor(dresults2$model, level = unique(dresults2$model))[1:42]
+
+ggplot(dresults2) +
+    geom_point(mapping = aes(x = dlevel_order, y = train_error, color = station)) +
+    labs(x = "Models", y = "Mean Absolute Error", title = "Final Results", subtitle = "Error Comparison")
 
 
 

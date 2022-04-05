@@ -1,6 +1,5 @@
 main-page
 small-scale-example
-relationship-between-wind-speed-and-energy-production-of-wind-turbines
 intro
 the-data
 linear
