@@ -63,6 +63,13 @@ ggplot(results) +
 
 
 
+# results.compare2 (with positive definite) -------------------------------
+results.sparse.pdb = results.sparse.pd[model == "lagged/pdb" | model == "lagged + powered/pdb",]
+results.sparse.pdl = results.sparse.pd[model == "lagged/pdl" | model == "lagged + powered/pdl",]
+
+results.sparse.pdb$model = c(rep("lagged",6),rep("lagged + powered",6))
+results.sparse.pdl$model = c(rep("lagged",6),rep("lagged + powered",6))
+
 
 # pca book ------------!ONEMLI!-----------------------------
 results[order(station)]
@@ -78,34 +85,36 @@ for(st in unique(results$station)){
         r2 = results.pca %>% filter(station == st, model == md)
         r3 = results.kron %>% filter(station == st, model == md)
         r4 = results.sparse %>% filter(station == st, model == md)
-        results.compare = rbind(results.compare, r1, r2, r3, r4)
+        r5 = results.sparse.pdb %>% filter(station == st, model == md)
+        r6 = results.sparse.pdl %>% filter(station == st, model == md)
+        results.compare = rbind(results.compare, r1, r2, r3, r4, r5, r6)
     }
 }
-results.compare$method = rep(c("full", "pca", "kronecker", "sparse"),12)
+results.compare$method = rep(c("full", "pca", "kronecker", "sparse1", "sparse2", "sparse3"),12)
 
 results.compare
 
 ### PLOTTTING ##
-level_order2 <- factor(results.compare$method, level = unique(results.compare$method))
+level_order2 <- factor(results.compare$method, level = unique(results.compare$method))[1:36]
 
-ggplot(results.compare) +
+ggplot(results.compare %>% filter(model == 'lagged')) +
     geom_point(mapping = aes(x = level_order2, y = test_error, color =  station)) +
     scale_color_brewer(palette="Dark2") +
-    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "Test Error Comparison")
+    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison")
 
 
-colnames(results.compare)
+ggplot(results.compare %>% filter(model == 'lagged + powered')) +
+    geom_point(mapping = aes(x = level_order2, y = test_error, color =  station)) +
+    scale_color_brewer(palette="Dark2") +
+    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison")
+
+ggplot(results.compare %>% filter(model == 'lagged + powered')) +
+    geom_point(mapping = aes(x = level_order2, y = train_error, color =  station)) +
+    scale_color_brewer(palette="Dark2") +
+    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TRAIN Error Comparison")
 
 
 
-
-
-# nearPD ------------------------------------------------------------------
-require(Matrix)
-plot(spsp.cov1)
-pdsp.cov1 = nearPD(spsp.cov1, corr = TRUE)
-plot(as.matrix(pdsp.cov1$mat))
-pdsp.cov1$mat
 
 
 

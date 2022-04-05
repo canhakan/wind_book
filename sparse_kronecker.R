@@ -1,14 +1,12 @@
 # Sparse Kronecker
 
 # Results Table -----------------------------------------------------------
-results.sparse = data.table(data = character(),
+results.sparse = data.table(station = character(),
                             model = character(),
                             train_error = numeric(),
                             test_error = numeric())
 
-results.sparse[order(data)]
-
-colnames(results.sparse)[1] = 'station'
+results.sparse[order(station)]
 
 # Lagged Model ------------------------------------------------------------
 # create Sparse Spatial Covariance Matrix
@@ -18,6 +16,7 @@ spsp.cov3 = sparseMaker(spatial.cov3, 4, 4)
 spsp.cov4 = sparseMaker(spatial.cov4, 4, 4)
 spsp.cov5 = sparseMaker(spatial.cov5, 4, 4)
 spsp.cov6 = sparseMaker(spatial.cov6, 3, 4)
+plot(spsp.cov2)
 # create Sparse Temporal Covariance Matrix
 spte.cov1 = sparseTimer(temporal.cov1)
 spte.cov2 = sparseTimer(temporal.cov2)
@@ -25,6 +24,7 @@ spte.cov3 = sparseTimer(temporal.cov3)
 spte.cov4 = sparseTimer(temporal.cov4)
 spte.cov5 = sparseTimer(temporal.cov5)
 spte.cov6 = sparseTimer(temporal.cov6)
+plot(spte.cov2)
 # kronecker product
 spkronpca1 = kronecker(spte.cov1, spsp.cov1)
 spkronpca2 = kronecker(spte.cov2, spsp.cov2)
@@ -91,12 +91,12 @@ error.test4 = mean(abs(pred.test4 - lagged.test4$production))
 error.test5 = mean(abs(pred.test5 - lagged.test5$production))
 error.test6 = mean(abs(pred.test6 - lagged.test6$production))
 
-res1 = data.table(data = "aliaga", model = "lagged", train_error = error.train1, test_error = error.test1)
-res2 = data.table(data = "bares",  model = "lagged", train_error = error.train2, test_error = error.test2)
-res3 = data.table(data = "dinar",  model = "lagged", train_error = error.train3, test_error = error.test3)
-res4 = data.table(data = "geycek", model = "lagged", train_error = error.train4, test_error = error.test4)
-res5 = data.table(data = "soke",   model = "lagged", train_error = error.train5, test_error = error.test5)
-res6 = data.table(data = "soma",   model = "lagged", train_error = error.train6, test_error = error.test6)
+res1 = data.table(station = "aliaga", model = "lagged", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "lagged", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "lagged", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "lagged", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "lagged", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "lagged", train_error = error.train6, test_error = error.test6)
 
 results.sparse = rbind(results.sparse, res1)
 results.sparse = rbind(results.sparse, res2)
@@ -189,12 +189,12 @@ error.test4 = mean(abs(pred.test4 - laggedpowered.test4$production))
 error.test5 = mean(abs(pred.test5 - laggedpowered.test5$production))
 error.test6 = mean(abs(pred.test6 - laggedpowered.test6$production))
 
-res1 = data.table(data = "aliaga", model = "lagged + powered", train_error = error.train1, test_error = error.test1)
-res2 = data.table(data = "bares",  model = "lagged + powered", train_error = error.train2, test_error = error.test2)
-res3 = data.table(data = "dinar",  model = "lagged + powered", train_error = error.train3, test_error = error.test3)
-res4 = data.table(data = "geycek", model = "lagged + powered", train_error = error.train4, test_error = error.test4)
-res5 = data.table(data = "soke",   model = "lagged + powered", train_error = error.train5, test_error = error.test5)
-res6 = data.table(data = "soma",   model = "lagged + powered", train_error = error.train6, test_error = error.test6)
+res1 = data.table(station = "aliaga", model = "lagged + powered", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "lagged + powered", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "lagged + powered", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "lagged + powered", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "lagged + powered", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "lagged + powered", train_error = error.train6, test_error = error.test6)
 
 results.sparse = rbind(results.sparse, res1)
 results.sparse = rbind(results.sparse, res2)
@@ -203,11 +203,7 @@ results.sparse = rbind(results.sparse, res4)
 results.sparse = rbind(results.sparse, res5)
 results.sparse = rbind(results.sparse, res6)
 
-results.sparse[order(data)]
-
-
-
-
+results.sparse[order(station)]
 
 
 

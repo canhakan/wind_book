@@ -1,0 +1,297 @@
+# Small Scale Example
+
+## Relationship between: Wind Speed and Energy Production of Wind Turbines
+
+## Intro
+
+<Insert Introduction Here>
+
+We will use wind speed data from 6 locations. We want to see whether using temporal and nonlinear features improve our forecast accuracy.
+
+The questions are as follows:
+
+1. Can there be a linear model for predicting energy production using wind speed data from near stations
+2. Are temporal features from past and (forecasts) from future is useful? i.e. Lagged Data
+3. Are non-linearly derived features useful? e.g. square of wind speed
+4. Are combination of lagged and "powered" features useful?
+5. Are polynomial combination of the wind speed useful?
+6. Are lagged versions of polynomial features useful?
+7. Are polynomial combination of the lagged features useful?
+
+(or)
+
+The relationships that we want to analyse are as follows:
+
+1. Linear relationship between the wind speed and energy production
+2. Temporal (e.g. features from past and (forecasts) from future)
+3. Non-linear (e.g. square of features)
+4. Combination of Temporal and Non-linear
+5. Polynomial 
+6. Lagged version of Polynomial
+7. Polynomials of Temporal features
+
+In the following sections we will show that all these relationships matter for wind power forecasting.
+
+Also we will see that dimensions increase exponentially as we try to derive more features. So we will have a motivation for dimension reduction.
+
+### The Data
+Our data has much more locations and ranges over a longer time. However, for this report we have reduced size for easiness, also we will see that even reduced size will not be small enough.
+
+All 6 datasets have 6 months of observations. First 5 months will be used for training and the last month will be used for test.
+
+5 of our 6 datasets have 9 locations (3x3 grid) and dataset-1 has 4 locations (2x2).
+
+Here is a look of our datasets.
+
+```{r}
+head(dt1)
+head(dt2)
+```
+
+### Linear
+
+It is clear that wind speed can give us some idea about the wind energy production. Let's see:
+
+```{r, collapse=TRUE}
+dfit1 = cv.glmnet(x = as.matrix(dt1[,-c(1:3)]), y = dt1$production, type.measure = "mae")
+pred.test1 = predict(dfit1, as.matrix(dte1[,-c(1:3)]), s = "lambda.1se")
+predict(dfit1,type="coef") # coefficients
+print(paste("Train Error: ", min(dfit1$cvup)), sep = "") # train error
+print(paste("Test Error: ", mean(abs(pred.test1 - dte1$production))), sep = "") # test error
+```
+We can see that our model does not only depend on the "intercept" also we have seen that test error is not too bad (actually it is better than the train error which we will discuss a little later.)
+
+Before looking at the all results, here is our workflow:
+
+```{r, eval = FALSE}
+# fit
+dfit1 = cv.glmnet(x = as.matrix(dt1[,-c(1:3)]), y = dt1$production, type.measure = "mae")
+# train error
+error.train1 = min(dfit1$cvup)
+# prediction
+pred.test1 = predict(dfit1, as.matrix(dte1[,-c(1:3)]), s = "lambda.1se")
+# test error
+error.test1 = mean(abs(pred.test1 - dte1$production))
+# result
+res1 = data.table(station = "aliaga", model = "base", train_error = error.train1, test_error = error.test1)
+# big result table
+dresults = rbind(dresults, res1)
+
+```
+
+
+Now, let's look at the results from all 6 stations:
+
+```{r}
+dresults %>% filter(model == "base") # we are filtering it but you don't need to as we just have results of the base models right now.
+```
+
+These results are our base results. We are expecting to outperform the base models in the following sections.
+
+> You may have noticed that test error is less than train error in 5 of 6 stations. It is highly likely because of the train/test splits we are using. The train set have observations from january to may which contains more instability compared to test dates (june). This is actually not a good practice but we ensure you that in the "bigger" project we did not have such results. Just for the reduced version, we may compare our models with their train results and use the test results just for checking a possible overfit.
+
+### Lagged
+
+Thinking about the nature of wind as a fluid, we think that the wind speed from past and (forecasts) from the future would be also related.
+
+#### Some Details:
+A custom function for deriving lagged datasets:
+```{r, eval = FALSE}
+createLagged <- function(data, lags, other.head = 0, other.tail = 0) {
+    # remove 0 if it exists
+    # get min/max for removing first/last rows for lag/lead
+    minlag = min(0,lags)
+    maxlag = max(0,lags)
+    startN = 1 - minlag
+    endN = nrow(data) - maxlag
+    # seperating others
+    other = c(other.head, other.tail)
+    tobe.head = data[(startN:endN),..other.head]
+    tobe.tail = data[(startN:endN),..other.tail]
+    dat = data.table() # empty data table
+    # adding lagged values one by one (column by column)
+    for(i in lags){
+        lagdat = data[((startN+i):(endN+i)),-..other]
+        if(i<0){
+            lagname = paste('lag',-i,sep='')
+            colnames(lagdat) = paste(colnames(lagdat),lagname,sep='_')
+        } else if(i>0){
+            lagname = paste('lead',i,sep='')
+            colnames(lagdat) = paste(colnames(lagdat),lagname,sep='_')
+        }
+        dat = cbind(dat,lagdat)
+    }
+    dat = cbind(tobe.head,dat,tobe.tail)
+    return(dat)
+}
+```
+
+```{r, eval = FALSE}
+# deriving lagged datasets
+dt_lag1 = createLagged(data = dt1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+```
+
+```{r, collapse = TRUE}
+head(dt_lag1)
+dim(dt_lag1)
+dim(dt_lag2)
+```
+
+> Notice that looking at only t-1 and t+1 triples the size of our data. Thinking about a time window of 7 hours may be problematic with bigger datasets.
+
+#### Results:
+
+Our approach is again same. We again used *cv.glmnet()*.
+
+```{r}
+dresults[order(station)] %>% filter(model %in% c("base","lagged"))
+```
+
+We see better results in all of the stations.
+
+
+
+### Powered
+
+Recall the formula for "kinetic energy":
+$$
+E_k = \frac{1}{2} m v^2 \text{, where $m$ is mass and $v$ is velocity.}
+$$
+
+We can see that square of velocity is related with kinetic energy. Also previous studies show that cube of wind velocity is also correlated with wind energy production however we will be only using squares for sake of simplicity.
+
+
+Some information about the powered datasets:
+
+```{r, collapse=TRUE}
+head(dt_pow1)
+dim(dt_pow1)
+dim(dt_pow2)
+```
+
+> Note that this also doubles the size of our dataset. (what will happen when we will combine lag and power :) )
+
+Skipping the details, here are our results:
+
+```{r}
+dresults[order(station)] %>% filter(model %in% c("base","lagged","powered"))
+```
+
+We again see that adding powered features gives an improvement over the base case. Also, there is no visible ranking between lagged and powered models. In some stations lagged model is better, in others powered one significantly improves the performance.
+
+Let's combine them:
+
+### Lagged and Powered
+
+We predict that using both temporal and nonlinear features will give us a better model. However with this section the dimensions will start to increase a lot.
+
+```{r, collapse=TRUE}
+dim(dt_lagpow1)
+dim(dt_lagpow2)
+```
+
+We used to have 4 or 9 features. Now we have 24 and 54 features. And note that we could have used a wider time window and take the cube of these features.
+
+With more detailed features our performance increased in all stations:
+
+```{r}
+dresults[order(station)] %>% filter(model %in% c("base","lagged","powered", "lagged + powered"))
+```
+
+### Polynomial
+
+As we have shown that all these derived features improve our performance, also again thinking about the fluid dynamics, we think that polynomials of wind speed features would give another nonlinear and temporal perspective.
+
+We will be using *polym()* function for creating our polynomial data:
+
+```{r, eval=FALSE}
+dt_poly1 = cbind(dt1[,1:3], polym(as.matrix(dt1[,-c(1:3)]),degree = 2, raw = TRUE)) # raw=TRUE means:: dont' scale
+```
+
+Checking the dimensions:
+```{r, collapse=TRUE}
+head(dt_poly1)
+dim(dt_poly1)
+dim(dt_poly2)
+```
+
+With polynomials, the dimensions increase even faster. (It is a fun exercise to write a function for calculating how many features there will be for different degrees of polynomials.)
+
+Not to bore you with details our results are as follows:
+```{r}
+dresults[order(station)] %>% filter(model %in% c("base","lagged","powered", "lagged + powered", "poly(2)"))
+```
+
+We were hoping to outperform the powered models. We sure did. However we see that in some stations lagged+powered models are better. So we think that using polynomial features from the past can improve our model even more!
+
+### Polynomial then Lagged
+
+Did you notice something weird in the title? Why didn't we just say Polynomial + Lagged or Lagged + Polynomial, just like in Lagged + Powered?
+
+Because now we are only interested in the polynomial combinations of our features and their results in different time indices. It is much easier than checking the polynomial combinations of lagged results.
+
+```{r, collapse=TRUE}
+colnames(dt_polylag1)
+dim(dt_polylag1)
+dim(dt_polylag2)
+```
+
+Now the dimensions of our datasets are tripled compared to the polynomial data. It is again a huge increase but the following section will be scarier.
+
+Looking at the results:
+
+```{r}
+dresults[order(station)] %>% filter(model %in% c("base","lagged","powered", "lagged + powered", "poly(2)", "poly(2) > lag"))
+```
+
+Great results! We have seen nice improvements in all stations.
+
+Now we have another question in our mind: can polynomial combinations of features from different times be useful ,too, for our forecasting?
+
+
+### Polynomial of Lagged (Lagged then Polynomial)
+
+Now we will combine features from different times. As we are looking at a time window of only size 3 and on 4 locations, things should not be very big. However with a wider time window and more locations this exercise may only make things complicated.
+
+While trying to create polynomials for stations 2 to 6 we get the following error:
+> Error: vector memory exhausted (limit reached?)
+
+As we can see our memory is not enough. This problem can be solved but we will stop there for now and in the next chapter we will try to handle this.
+
+However we were able to create the dataset for station1, let's see its performance:
+
+```{r}
+fit.lagpoly1 = cv.glmnet(x = as.matrix(dt_lagpoly1[,-c(1:3)]), y = dt_lagpoly1$production, type.measure = 'mae')
+error.train1 = min(fit.lagpoly1$cvup)
+pred.test1 = predict(fit.lagpoly1, as.matrix(dte_lagpoly1[,-c(1:3)]), s = "lambda.1se")
+error.test1 = mean(abs(pred.test1 - dte_lagpoly1$production))
+res1 = data.table(station = "aliaga", model = "lag > poly(2)", train_error = error.train1, test_error = error.test1)
+rbind(dresults %>% filter(station == "aliaga") %>% filter(model %in% c("base","lagged","powered", "lagged + powered", "poly(2)", "poly(2) > lag")), res1)
+```
+We were able to reduce our error, once more. This is a good motivation for us to move on. Before finalizing this section let's try one more thing.
+
+### Polynomial of degree 3
+
+Just for future motivation, lets try the base model of polynomial with degree 3:
+
+```{r}
+dresults[order(station)]
+```
+Wow! Our poly(3) models are outperforming poly(2)>lag models. However combination of lag and poly(3) would again create dimension problems. So we stop here.
+
+
+### Final Words
+
+In this section, we have shown that there are many ways to derive new features that increases performance. However with more features more problems occur, especially because of size. In the following section we will try to keep our dimensions low while trying to make use of these new features.
+
+We will talk about:
+
+1. Sparse Polynomials
+2. Principal Component Analysis (PCA)
+3. Kronecker PCA
+4. Sparse Kronecker PCA
+5. Kernel PCA
+...
+
+
+

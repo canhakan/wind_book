@@ -99,7 +99,7 @@ pcPicker <- function(eigenvalues, var_wanted=0.99){
 }
 
 
-# PC Picker Advanced (for kronecker etc.) ---------------------------------
+# PC Picker Advanced (for kronecker etc.)
 pcLister <- function(eigenvalues, var_wanted){
     x = c()
     var_explained = 0
@@ -114,8 +114,7 @@ pcLister <- function(eigenvalues, var_wanted){
     return(x)
 }
 
-
-# PC Picker Advanced with Complex numbers ---------------------------------
+# PC Picker Advanced with Complex numbers
 pcListerComplex <- function(eigenvalues, var_wanted){
     eigenvalues = Re(eigenvalues)
     x = c()

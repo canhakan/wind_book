@@ -4,6 +4,7 @@ results.sparse.pd = data.table(station = character(),
                                train_error = numeric(),
                                test_error = numeric())
 
+
 # Lagged (PDize spatial and temporal) -------------------------------------
 # spatial
 pdsp.cov1 = nearPD(spsp.cov1,corr = TRUE)
@@ -376,10 +377,6 @@ paste(ncol(spkronlag3.pdl), ncol(spkronlag3.pdb), sep= " vs ")
 paste(ncol(spkronlag4.pdl), ncol(spkronlag4.pdb), sep= " vs ")
 paste(ncol(spkronlag5.pdl), ncol(spkronlag5.pdb), sep= " vs ")
 paste(ncol(spkronlag6.pdl), ncol(spkronlag6.pdb), sep= " vs ")
-
-
-
-
 
 
 

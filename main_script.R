@@ -136,14 +136,13 @@ laggedpowered.test6 = createLagged(data = powered.test6, lags = c(-3:3), other.h
 
 
 # Results Table -----------------------------------------------------------
-results = data.table(data = character(),
+results = data.table(station = character(),
                      model = character(),
                      train_error = numeric(),
                      test_error = numeric())
 
-results[order(data)]
+results[order(station)]
 
-colnames(results)[1] = 'station'
 
 # Base Model --------------------------------------------------------------
 fit1 = cv.glmnet(x = as.matrix(train1[,4:12]), y = train1$production, type.measure = "mae")
@@ -181,12 +180,12 @@ error.test4 = mean(abs(pred.test4 - test4$production))
 error.test5 = mean(abs(pred.test5 - test5$production))
 error.test6 = mean(abs(pred.test6 - test6$production))
 
-res1 = data.table(data = "aliaga", model = "base", train_error = error.train1, test_error = error.test1)
-res2 = data.table(data = "bares",  model = "base", train_error = error.train2, test_error = error.test2)
-res3 = data.table(data = "dinar",  model = "base", train_error = error.train3, test_error = error.test3)
-res4 = data.table(data = "geycek", model = "base", train_error = error.train4, test_error = error.test4)
-res5 = data.table(data = "soke",   model = "base", train_error = error.train5, test_error = error.test5)
-res6 = data.table(data = "soma",   model = "base", train_error = error.train6, test_error = error.test6)
+res1 = data.table(station = "aliaga", model = "base", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "base", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "base", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "base", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "base", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "base", train_error = error.train6, test_error = error.test6)
 
 results = rbind(results, res1)
 results = rbind(results, res2)
@@ -194,23 +193,23 @@ results = rbind(results, res3)
 results = rbind(results, res4)
 results = rbind(results, res5)
 results = rbind(results, res6)
-results
+results[order(station)]
 
 
 # Lagged ------------------------------------------------------------------
-fit.lag1 = cv.glmnet(x = as.matrix(lagged1[,4:66]), y = lagged1$production, type.measure = "mae")
+fit.lag1 = cv.glmnet(x = as.matrix(lagged1[,4:66]),  y = lagged1$production, type.measure = "mae")
 fit.lag2 = cv.glmnet(x = as.matrix(lagged2[,4:115]), y = lagged2$production, type.measure = "mae")
 fit.lag3 = cv.glmnet(x = as.matrix(lagged3[,4:115]), y = lagged3$production, type.measure = "mae")
 fit.lag4 = cv.glmnet(x = as.matrix(lagged4[,4:115]), y = lagged4$production, type.measure = "mae")
 fit.lag5 = cv.glmnet(x = as.matrix(lagged5[,4:115]), y = lagged5$production, type.measure = "mae")
-fit.lag6 = cv.glmnet(x = as.matrix(lagged6[,4:87]), y = lagged6$production, type.measure = "mae")
+fit.lag6 = cv.glmnet(x = as.matrix(lagged6[,4:87]),  y = lagged6$production, type.measure = "mae")
 
-pred1 = predict(fit.lag1, as.matrix(lagged1[,4:66]), s = "lambda.1se")
+pred1 = predict(fit.lag1, as.matrix(lagged1[,4:66]),  s = "lambda.1se")
 pred2 = predict(fit.lag2, as.matrix(lagged2[,4:115]), s = "lambda.1se")
 pred3 = predict(fit.lag3, as.matrix(lagged3[,4:115]), s = "lambda.1se")
 pred4 = predict(fit.lag4, as.matrix(lagged4[,4:115]), s = "lambda.1se")
 pred5 = predict(fit.lag5, as.matrix(lagged5[,4:115]), s = "lambda.1se")
-pred6 = predict(fit.lag6, as.matrix(lagged6[,4:87]), s = "lambda.1se")
+pred6 = predict(fit.lag6, as.matrix(lagged6[,4:87]),  s = "lambda.1se")
 
 error.train1 = mean(abs(pred1 - lagged1$production))
 error.train2 = mean(abs(pred2 - lagged2$production))
@@ -233,12 +232,12 @@ error.test4 = mean(abs(pred.test4 - lagged.test4$production))
 error.test5 = mean(abs(pred.test5 - lagged.test5$production))
 error.test6 = mean(abs(pred.test6 - lagged.test6$production))
 
-res1 = data.table(data = "aliaga", model = "lagged", train_error = error.train1, test_error = error.test1)
-res2 = data.table(data = "bares",  model = "lagged", train_error = error.train2, test_error = error.test2)
-res3 = data.table(data = "dinar",  model = "lagged", train_error = error.train3, test_error = error.test3)
-res4 = data.table(data = "geycek", model = "lagged", train_error = error.train4, test_error = error.test4)
-res5 = data.table(data = "soke",   model = "lagged", train_error = error.train5, test_error = error.test5)
-res6 = data.table(data = "soma",   model = "lagged", train_error = error.train6, test_error = error.test6)
+res1 = data.table(station = "aliaga", model = "lagged", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "lagged", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "lagged", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "lagged", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "lagged", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "lagged", train_error = error.train6, test_error = error.test6)
 
 results = rbind(results, res1)
 results = rbind(results, res2)
@@ -284,12 +283,12 @@ error.test4 = mean(abs(pred.test4 - powered.test4$production))
 error.test5 = mean(abs(pred.test5 - powered.test5$production))
 error.test6 = mean(abs(pred.test6 - powered.test6$production))
 
-res1 = data.table(data = "aliaga", model = "powered", train_error = error.train1, test_error = error.test1)
-res2 = data.table(data = "bares",  model = "powered", train_error = error.train2, test_error = error.test2)
-res3 = data.table(data = "dinar",  model = "powered", train_error = error.train3, test_error = error.test3)
-res4 = data.table(data = "geycek", model = "powered", train_error = error.train4, test_error = error.test4)
-res5 = data.table(data = "soke",   model = "powered", train_error = error.train5, test_error = error.test5)
-res6 = data.table(data = "soma",   model = "powered", train_error = error.train6, test_error = error.test6)
+res1 = data.table(station = "aliaga", model = "powered", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "powered", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "powered", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "powered", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "powered", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "powered", train_error = error.train6, test_error = error.test6)
 
 results = rbind(results, res1)
 results = rbind(results, res2)
@@ -335,12 +334,12 @@ error.test4 = mean(abs(pred.test4 - laggedpowered.test4$production))
 error.test5 = mean(abs(pred.test5 - laggedpowered.test5$production))
 error.test6 = mean(abs(pred.test6 - laggedpowered.test6$production))
 
-res1 = data.table(data = "aliaga", model = "lagged + powered", train_error = error.train1, test_error = error.test1)
-res2 = data.table(data = "bares",  model = "lagged + powered", train_error = error.train2, test_error = error.test2)
-res3 = data.table(data = "dinar",  model = "lagged + powered", train_error = error.train3, test_error = error.test3)
-res4 = data.table(data = "geycek", model = "lagged + powered", train_error = error.train4, test_error = error.test4)
-res5 = data.table(data = "soke",   model = "lagged + powered", train_error = error.train5, test_error = error.test5)
-res6 = data.table(data = "soma",   model = "lagged + powered", train_error = error.train6, test_error = error.test6)
+res1 = data.table(station = "aliaga", model = "lagged + powered", train_error = error.train1, test_error = error.test1)
+res2 = data.table(station = "bares",  model = "lagged + powered", train_error = error.train2, test_error = error.test2)
+res3 = data.table(station = "dinar",  model = "lagged + powered", train_error = error.train3, test_error = error.test3)
+res4 = data.table(station = "geycek", model = "lagged + powered", train_error = error.train4, test_error = error.test4)
+res5 = data.table(station = "soke",   model = "lagged + powered", train_error = error.train5, test_error = error.test5)
+res6 = data.table(station = "soma",   model = "lagged + powered", train_error = error.train6, test_error = error.test6)
 
 results = rbind(results, res1)
 results = rbind(results, res2)
@@ -350,7 +349,7 @@ results = rbind(results, res5)
 results = rbind(results, res6)
 
 
-results[order(data)]
+results[order(station)]
 
 
 

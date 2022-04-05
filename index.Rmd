@@ -4,62 +4,68 @@ author: "Can Hakan Dagidir"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
+# Main Page
 
-# RESULTS
-## Full Models
-Full Model Comparsion Table
-```{r}
-results[order(station)]
-```
-Plots
-```{r}
-ggplot(results) +
-    geom_point(mapping = aes(x = level_order, y = test_error, color =  station)) + 
-    scale_color_brewer(palette="Dark2") + 
-    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison")
+Contents are removed for a while.
 
-ggplot(results) +
-    geom_point(mapping = aes(x = level_order, y = train_error, color =  station)) + 
-    scale_color_brewer(palette="Dark2") + 
-    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TRAIN Error Comparison")
+Check [here](reduced-size.html)
 
-```
 
-## Dimension Reduction
-```{r}
-results.compare[order(station)]
-```
+<!-- # RESULTS -->
+<!-- ## Full Models -->
+<!-- Full Model Comparsion Table -->
+<!-- ```{r} -->
+<!-- results[order(station)] -->
+<!-- ``` -->
+<!-- Plots -->
+<!-- ```{r} -->
+<!-- ggplot(results) + -->
+<!--     geom_point(mapping = aes(x = level_order, y = test_error, color =  station)) +  -->
+<!--     scale_color_brewer(palette="Dark2") +  -->
+<!--     labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison") -->
 
-Comparison on Lagged Data Performance:
+<!-- ggplot(results) + -->
+<!--     geom_point(mapping = aes(x = level_order, y = train_error, color =  station)) +  -->
+<!--     scale_color_brewer(palette="Dark2") +  -->
+<!--     labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TRAIN Error Comparison") -->
 
-```{r}
-level_order2 <- factor(results.compare$method, level = unique(results.compare$method))[1:36]
+<!-- ``` -->
 
-ggplot(results.compare %>% filter(model == 'lagged')) +
-    geom_point(mapping = aes(x = level_order2, y = test_error, color =  station)) +
-    scale_color_brewer(palette="Dark2") +
-    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison")
+<!-- ## Dimension Reduction -->
+<!-- ```{r} -->
+<!-- results.compare[order(station)] -->
+<!-- ``` -->
 
-ggplot(results.compare %>% filter(model == 'lagged')) +
-    geom_point(mapping = aes(x = level_order2, y = train_error, color =  station)) +
-    scale_color_brewer(palette="Dark2") +
-    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TRAIN Error Comparison")
+<!-- Comparison on Lagged Data Performance: -->
 
-```
+<!-- ```{r} -->
+<!-- level_order2 <- factor(results.compare$method, level = unique(results.compare$method))[1:36] -->
 
-Comparison on Lagged + Powered Data Performance:
-```{r}
-ggplot(results.compare %>% filter(model == 'lagged + powered')) +
-    geom_point(mapping = aes(x = level_order2, y = test_error, color =  station)) +
-    scale_color_brewer(palette="Dark2") +
-    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison")
+<!-- ggplot(results.compare %>% filter(model == 'lagged')) + -->
+<!--     geom_point(mapping = aes(x = level_order2, y = test_error, color =  station)) + -->
+<!--     scale_color_brewer(palette="Dark2") + -->
+<!--     labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison") -->
 
-ggplot(results.compare %>% filter(model == 'lagged + powered')) +
-    geom_point(mapping = aes(x = level_order2, y = train_error, color =  station)) +
-    scale_color_brewer(palette="Dark2") +
-    labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TRAIN Error Comparison")
+<!-- ggplot(results.compare %>% filter(model == 'lagged')) + -->
+<!--     geom_point(mapping = aes(x = level_order2, y = train_error, color =  station)) + -->
+<!--     scale_color_brewer(palette="Dark2") + -->
+<!--     labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TRAIN Error Comparison") -->
 
-```
+<!-- ``` -->
+
+<!-- Comparison on Lagged + Powered Data Performance: -->
+<!-- ```{r} -->
+<!-- ggplot(results.compare %>% filter(model == 'lagged + powered')) + -->
+<!--     geom_point(mapping = aes(x = level_order2, y = test_error, color =  station)) + -->
+<!--     scale_color_brewer(palette="Dark2") + -->
+<!--     labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TEST Error Comparison") -->
+
+<!-- ggplot(results.compare %>% filter(model == 'lagged + powered')) + -->
+<!--     geom_point(mapping = aes(x = level_order2, y = train_error, color =  station)) + -->
+<!--     scale_color_brewer(palette="Dark2") + -->
+<!--     labs(x = "Models", y = "Mean Absolute Error", title = "Full Models", subtitle = "TRAIN Error Comparison") -->
+
+<!-- ``` -->
 
 
 

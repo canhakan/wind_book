@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 The Lore (Reduced Size Version) | Wind Power Forecasting - Dimension Reduction</title>
+  <meta name="description" content="Chapter 5 The Lore (Reduced Size Version) | Wind Power Forecasting - Dimension Reduction" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 The Lore (Reduced Size Version) | Wind Power Forecasting - Dimension Reduction" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 The Lore (Reduced Size Version) | Wind Power Forecasting - Dimension Reduction" />
+  
+  
+  
+
+<meta name="author" content="Can Hakan Dagidir" />
+
+
+<meta name="date" content="2022-04-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dimension-reduction-incomplete.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Wind Power Forecasting</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> RESULTS</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#full-models"><i class="fa fa-check"></i><b>1.1</b> Full Models</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#dimension-reduction"><i class="fa fa-check"></i><b>1.2</b> Dimension Reduction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="report-incomplete.html"><a href="report-incomplete.html"><i class="fa fa-check"></i><b>2</b> Report (incomplete)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="report-incomplete.html"><a href="report-incomplete.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="report-incomplete.html"><a href="report-incomplete.html#data"><i class="fa fa-check"></i><b>2.2</b> Data</a></li>
+<li class="chapter" data-level="2.3" data-path="report-incomplete.html"><a href="report-incomplete.html#new-features"><i class="fa fa-check"></i><b>2.3</b> New Features</a></li>
+<li class="chapter" data-level="2.4" data-path="report-incomplete.html"><a href="report-incomplete.html#models"><i class="fa fa-check"></i><b>2.4</b> Models</a></li>
+<li class="chapter" data-level="2.5" data-path="report-incomplete.html"><a href="report-incomplete.html#dimension-reduction-methods"><i class="fa fa-check"></i><b>2.5</b> Dimension Reduction Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="full-models-incomplete.html"><a href="full-models-incomplete.html"><i class="fa fa-check"></i><b>3</b> Full Models (incomplete)</a></li>
+<li class="chapter" data-level="4" data-path="dimension-reduction-incomplete.html"><a href="dimension-reduction-incomplete.html"><i class="fa fa-check"></i><b>4</b> Dimension Reduction (incomplete)</a></li>
+<li class="chapter" data-level="5" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html"><i class="fa fa-check"></i><b>5</b> The Lore (Reduced Size Version)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#the-path"><i class="fa fa-check"></i><b>5.1</b> The Path</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#the-data"><i class="fa fa-check"></i><b>5.1.1</b> The Data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#linear"><i class="fa fa-check"></i><b>5.1.2</b> Linear</a></li>
+<li class="chapter" data-level="5.1.3" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#lagged"><i class="fa fa-check"></i><b>5.1.3</b> Lagged</a></li>
+<li class="chapter" data-level="5.1.4" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#powered"><i class="fa fa-check"></i><b>5.1.4</b> Powered</a></li>
+<li class="chapter" data-level="5.1.5" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#lagged-and-powered"><i class="fa fa-check"></i><b>5.1.5</b> Lagged and Powered</a></li>
+<li class="chapter" data-level="5.1.6" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#polynomial"><i class="fa fa-check"></i><b>5.1.6</b> Polynomial</a></li>
+<li class="chapter" data-level="5.1.7" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#polynomial-then-lagged"><i class="fa fa-check"></i><b>5.1.7</b> Polynomial then Lagged</a></li>
+<li class="chapter" data-level="5.1.8" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#polynomial-of-lagged-lagged-then-polynomial"><i class="fa fa-check"></i><b>5.1.8</b> Polynomial of Lagged (Lagged then Polynomial)</a></li>
+<li class="chapter" data-level="5.1.9" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#polynomial-of-degree-3"><i class="fa fa-check"></i><b>5.1.9</b> Polynomial of degree 3</a></li>
+<li class="chapter" data-level="5.1.10" data-path="the-lore-reduced-size-version.html"><a href="the-lore-reduced-size-version.html#final-words"><i class="fa fa-check"></i><b>5.1.10</b> Final Words</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Wind Power Forecasting - Dimension Reduction</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-lore-reduced-size-version" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> The Lore (Reduced Size Version)</h1>
+<p>Relationship between: Wind Speed and Energy Production of Wind Turbines</p>
+<div id="the-path" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> The Path</h2>
+<p>[Insert Introduction Here]</p>
+<p>We will use wind speed data from 6 locations. We want to see whether using temporal and nonlinear features improve our forecast accuracy.</p>
+<p>The questions are as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Can there be a linear model for predicting energy production using wind speed data from near stations</li>
+<li>Are temporal features from past and (forecasts) from future is useful? i.e. Lagged Data</li>
+<li>Are non-linearly derived features useful? e.g. square of wind speed</li>
+<li>Are combination of lagged and “powered” features useful?</li>
+<li>Are polynomial combination of the wind speed useful?</li>
+<li>Are lagged versions of polynomial features useful?</li>
+<li>Are polynomial combination of the lagged features useful?</li>
+</ol>
+<p>(or)</p>
+<p>The relationships that we want to analyse are as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Linear relationship between the wind speed and energy production</li>
+<li>Temporal (e.g. features from past and (forecasts) from future)</li>
+<li>Non-linear (e.g. square of features)</li>
+<li>Combination of Temporal and Non-linear</li>
+<li>Polynomial</li>
+<li>Lagged version of Polynomial</li>
+<li>Polynomials of Temporal features</li>
+</ol>
+<p>In the following sections we will show that all these relationships matter for wind power forecasting.</p>
+<p>Also we will see that dimensions increase exponentially as we try to derive more features. So we will have a motivation for dimension reduction.</p>
+<div id="the-data" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> The Data</h3>
+<p>Our data has much more locations and ranges over a longer time. However, for this report we have reduced size for easiness, also we will see that even reduced size will not be small enough.</p>
+<p>All 6 datasets have 6 months of observations. First 5 months will be used for training and the last month will be used for test.</p>
+<p>5 of our 6 datasets have 9 locations (3x3 grid) and dataset-1 has 4 locations (2x2).</p>
+<p>Here is a look of our datasets.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="the-lore-reduced-size-version.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt1)</span></code></pre></div>
+<pre><code>##          date hour production     loc1     loc2     loc3      loc4
+## 1: 2017-01-02    0          0 1.490839 1.184061 1.141621 0.4410216
+## 2: 2017-01-02    1          0 1.700052 1.307793 1.385103 0.6289321
+## 3: 2017-01-02    2          0 1.910143 1.432977 1.628786 0.8169388
+## 4: 2017-01-02    3          0 2.120849 1.559263 1.872592 1.0049876
+## 5: 2017-01-02    4          0 2.225062 1.552668 2.059827 0.9891467
+## 6: 2017-01-02    5          0 2.332381 1.547259 2.249153 0.9741549</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="the-lore-reduced-size-version.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt2)</span></code></pre></div>
+<pre><code>##          date hour production     loc1     loc2     loc3     loc4     loc5     loc6     loc7     loc8     loc9
+## 1: 2017-01-02    0       7.00 2.420620 2.644277 2.922619 2.624881 3.144026 2.994879 2.288274 2.910344 3.524599
+## 2: 2017-01-02    1       7.00 2.415885 2.607095 2.823119 2.617361 3.118926 3.009090 2.321575 2.935492 3.521327
+## 3: 2017-01-02    2      10.00 2.411182 2.570002 2.723692 2.612287 3.095949 3.023605 2.354877 2.962141 3.521237
+## 4: 2017-01-02    3      20.00 2.406512 2.533002 2.624348 2.609674 3.075142 3.038421 2.388179 2.990251 3.524330
+## 5: 2017-01-02    4      27.00 2.522292 2.622637 2.607378 2.641233 3.119695 3.146457 2.564588 3.112134 3.559182
+## 6: 2017-01-02    5      17.09 2.638823 2.712524 2.590410 2.672959 3.164253 3.254569 2.741650 3.234055 3.594219</code></pre>
+</div>
+<div id="linear" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Linear</h3>
+<p>It is clear that wind speed can give us some idea about the wind energy production. Let’s see:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="the-lore-reduced-size-version.html#cb23-1" aria-hidden="true" tabindex="-1"></a>dfit1 <span class="ot">=</span> <span class="fu">cv.glmnet</span>(<span class="at">x =</span> <span class="fu">as.matrix</span>(dt1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]), <span class="at">y =</span> dt1<span class="sc">$</span>production, <span class="at">type.measure =</span> <span class="st">&quot;mae&quot;</span>)</span>
+<span id="cb23-2"><a href="the-lore-reduced-size-version.html#cb23-2" aria-hidden="true" tabindex="-1"></a>pred.test1 <span class="ot">=</span> <span class="fu">predict</span>(dfit1, <span class="fu">as.matrix</span>(dte1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]), <span class="at">s =</span> <span class="st">&quot;lambda.1se&quot;</span>)</span>
+<span id="cb23-3"><a href="the-lore-reduced-size-version.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(dfit1,<span class="at">type=</span><span class="st">&quot;coef&quot;</span>) <span class="co"># coefficients</span></span>
+<span id="cb23-4"><a href="the-lore-reduced-size-version.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 x 1 sparse Matrix of class &quot;dgCMatrix&quot;</span></span>
+<span id="cb23-5"><a href="the-lore-reduced-size-version.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="do">##             lambda.1se</span></span>
+<span id="cb23-6"><a href="the-lore-reduced-size-version.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept) -13.913447</span></span>
+<span id="cb23-7"><a href="the-lore-reduced-size-version.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="do">## loc1         -2.136017</span></span>
+<span id="cb23-8"><a href="the-lore-reduced-size-version.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="do">## loc2         -1.279383</span></span>
+<span id="cb23-9"><a href="the-lore-reduced-size-version.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="do">## loc3         -1.319780</span></span>
+<span id="cb23-10"><a href="the-lore-reduced-size-version.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="do">## loc4         11.030869</span></span>
+<span id="cb23-11"><a href="the-lore-reduced-size-version.html#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Train Error: &quot;</span>, <span class="fu">min</span>(dfit1<span class="sc">$</span>cvup)), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># train error</span></span>
+<span id="cb23-12"><a href="the-lore-reduced-size-version.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Train Error:  16.0908493072573&quot;</span></span>
+<span id="cb23-13"><a href="the-lore-reduced-size-version.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Test Error: &quot;</span>, <span class="fu">mean</span>(<span class="fu">abs</span>(pred.test1 <span class="sc">-</span> dte1<span class="sc">$</span>production))), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># test error</span></span>
+<span id="cb23-14"><a href="the-lore-reduced-size-version.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Test Error:  13.4394665091161&quot;</span></span></code></pre></div>
+<p>We can see that our model does not only depend on the “intercept” also we have seen that test error is not too bad (actually it is better than the train error which we will discuss a little later.)</p>
+<p>Before looking at the all results, here is our workflow:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="the-lore-reduced-size-version.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit</span></span>
+<span id="cb24-2"><a href="the-lore-reduced-size-version.html#cb24-2" aria-hidden="true" tabindex="-1"></a>dfit1 <span class="ot">=</span> <span class="fu">cv.glmnet</span>(<span class="at">x =</span> <span class="fu">as.matrix</span>(dt1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]), <span class="at">y =</span> dt1<span class="sc">$</span>production, <span class="at">type.measure =</span> <span class="st">&quot;mae&quot;</span>)</span>
+<span id="cb24-3"><a href="the-lore-reduced-size-version.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># train error</span></span>
+<span id="cb24-4"><a href="the-lore-reduced-size-version.html#cb24-4" aria-hidden="true" tabindex="-1"></a>error.train1 <span class="ot">=</span> <span class="fu">min</span>(dfit1<span class="sc">$</span>cvup)</span>
+<span id="cb24-5"><a href="the-lore-reduced-size-version.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction</span></span>
+<span id="cb24-6"><a href="the-lore-reduced-size-version.html#cb24-6" aria-hidden="true" tabindex="-1"></a>pred.test1 <span class="ot">=</span> <span class="fu">predict</span>(dfit1, <span class="fu">as.matrix</span>(dte1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]), <span class="at">s =</span> <span class="st">&quot;lambda.1se&quot;</span>)</span>
+<span id="cb24-7"><a href="the-lore-reduced-size-version.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># test error</span></span>
+<span id="cb24-8"><a href="the-lore-reduced-size-version.html#cb24-8" aria-hidden="true" tabindex="-1"></a>error.test1 <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">abs</span>(pred.test1 <span class="sc">-</span> dte1<span class="sc">$</span>production))</span>
+<span id="cb24-9"><a href="the-lore-reduced-size-version.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># result</span></span>
+<span id="cb24-10"><a href="the-lore-reduced-size-version.html#cb24-10" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">station =</span> <span class="st">&quot;aliaga&quot;</span>, <span class="at">model =</span> <span class="st">&quot;base&quot;</span>, <span class="at">train_error =</span> error.train1, <span class="at">test_error =</span> error.test1)</span>
+<span id="cb24-11"><a href="the-lore-reduced-size-version.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># big result table</span></span>
+<span id="cb24-12"><a href="the-lore-reduced-size-version.html#cb24-12" aria-hidden="true" tabindex="-1"></a>dresults <span class="ot">=</span> <span class="fu">rbind</span>(dresults, res1)</span></code></pre></div>
+<p>Now, let’s look at the results from all 6 stations:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="the-lore-reduced-size-version.html#cb25-1" aria-hidden="true" tabindex="-1"></a>dresults <span class="sc">%&gt;%</span> <span class="fu">filter</span>(model <span class="sc">==</span> <span class="st">&quot;base&quot;</span>) <span class="co"># we are filtering it but you don&#39;t need to as we just have results of the base models right now.</span></span></code></pre></div>
+<pre><code>##    station model train_error test_error
+## 1:  aliaga  base   16.115594  13.446084
+## 2:   bares  base    8.368780   6.469539
+## 3:   dinar  base   25.054550  19.934007
+## 4:  geycek  base   21.612130  18.296658
+## 5:    soke  base    7.570961   8.648788
+## 6:    soma  base   14.451429  13.176678</code></pre>
+<p>These results are our base results. We are expecting to outperform the base models in the following sections.</p>
+<blockquote>
+<p>You may have noticed that test error is less than train error in 5 of 6 stations. It is highly likely because of the train/test splits we are using. The train set have observations from january to may which contains more instability compared to test dates (june). This is actually not a good practice but we ensure you that in the “bigger” project we did not have such results. Just for the reduced version, we may compare our models with their train results and use the test results just for checking a possible overfit.</p>
+</blockquote>
+</div>
+<div id="lagged" class="section level3" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Lagged</h3>
+<p>Thinking about the nature of wind as a fluid, we think that the wind speed from past and (forecasts) from the future would be also related.</p>
+<div id="some-details" class="section level4" number="5.1.3.1">
+<h4><span class="header-section-number">5.1.3.1</span> Some Details:</h4>
+<p>A custom function for deriving lagged datasets:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="the-lore-reduced-size-version.html#cb27-1" aria-hidden="true" tabindex="-1"></a>createLagged <span class="ot">&lt;-</span> <span class="cf">function</span>(data, lags, <span class="at">other.head =</span> <span class="dv">0</span>, <span class="at">other.tail =</span> <span class="dv">0</span>) {</span>
+<span id="cb27-2"><a href="the-lore-reduced-size-version.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove 0 if it exists</span></span>
+<span id="cb27-3"><a href="the-lore-reduced-size-version.html#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get min/max for removing first/last rows for lag/lead</span></span>
+<span id="cb27-4"><a href="the-lore-reduced-size-version.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    minlag <span class="ot">=</span> <span class="fu">min</span>(<span class="dv">0</span>,lags)</span>
+<span id="cb27-5"><a href="the-lore-reduced-size-version.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    maxlag <span class="ot">=</span> <span class="fu">max</span>(<span class="dv">0</span>,lags)</span>
+<span id="cb27-6"><a href="the-lore-reduced-size-version.html#cb27-6" aria-hidden="true" tabindex="-1"></a>    startN <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> minlag</span>
+<span id="cb27-7"><a href="the-lore-reduced-size-version.html#cb27-7" aria-hidden="true" tabindex="-1"></a>    endN <span class="ot">=</span> <span class="fu">nrow</span>(data) <span class="sc">-</span> maxlag</span>
+<span id="cb27-8"><a href="the-lore-reduced-size-version.html#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># seperating others</span></span>
+<span id="cb27-9"><a href="the-lore-reduced-size-version.html#cb27-9" aria-hidden="true" tabindex="-1"></a>    other <span class="ot">=</span> <span class="fu">c</span>(other.head, other.tail)</span>
+<span id="cb27-10"><a href="the-lore-reduced-size-version.html#cb27-10" aria-hidden="true" tabindex="-1"></a>    tobe.head <span class="ot">=</span> data[(startN<span class="sc">:</span>endN),..other.head]</span>
+<span id="cb27-11"><a href="the-lore-reduced-size-version.html#cb27-11" aria-hidden="true" tabindex="-1"></a>    tobe.tail <span class="ot">=</span> data[(startN<span class="sc">:</span>endN),..other.tail]</span>
+<span id="cb27-12"><a href="the-lore-reduced-size-version.html#cb27-12" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">=</span> <span class="fu">data.table</span>() <span class="co"># empty data table</span></span>
+<span id="cb27-13"><a href="the-lore-reduced-size-version.html#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># adding lagged values one by one (column by column)</span></span>
+<span id="cb27-14"><a href="the-lore-reduced-size-version.html#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> lags){</span>
+<span id="cb27-15"><a href="the-lore-reduced-size-version.html#cb27-15" aria-hidden="true" tabindex="-1"></a>        lagdat <span class="ot">=</span> data[((startN<span class="sc">+</span>i)<span class="sc">:</span>(endN<span class="sc">+</span>i)),<span class="sc">-</span>..other]</span>
+<span id="cb27-16"><a href="the-lore-reduced-size-version.html#cb27-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(i<span class="sc">&lt;</span><span class="dv">0</span>){</span>
+<span id="cb27-17"><a href="the-lore-reduced-size-version.html#cb27-17" aria-hidden="true" tabindex="-1"></a>            lagname <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&#39;lag&#39;</span>,<span class="sc">-</span>i,<span class="at">sep=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb27-18"><a href="the-lore-reduced-size-version.html#cb27-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">colnames</span>(lagdat) <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(lagdat),lagname,<span class="at">sep=</span><span class="st">&#39;_&#39;</span>)</span>
+<span id="cb27-19"><a href="the-lore-reduced-size-version.html#cb27-19" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span>(i<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb27-20"><a href="the-lore-reduced-size-version.html#cb27-20" aria-hidden="true" tabindex="-1"></a>            lagname <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&#39;lead&#39;</span>,i,<span class="at">sep=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb27-21"><a href="the-lore-reduced-size-version.html#cb27-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">colnames</span>(lagdat) <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(lagdat),lagname,<span class="at">sep=</span><span class="st">&#39;_&#39;</span>)</span>
+<span id="cb27-22"><a href="the-lore-reduced-size-version.html#cb27-22" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb27-23"><a href="the-lore-reduced-size-version.html#cb27-23" aria-hidden="true" tabindex="-1"></a>        dat <span class="ot">=</span> <span class="fu">cbind</span>(dat,lagdat)</span>
+<span id="cb27-24"><a href="the-lore-reduced-size-version.html#cb27-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb27-25"><a href="the-lore-reduced-size-version.html#cb27-25" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">=</span> <span class="fu">cbind</span>(tobe.head,dat,tobe.tail)</span>
+<span id="cb27-26"><a href="the-lore-reduced-size-version.html#cb27-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(dat)</span>
+<span id="cb27-27"><a href="the-lore-reduced-size-version.html#cb27-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="the-lore-reduced-size-version.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># deriving lagged datasets</span></span>
+<span id="cb28-2"><a href="the-lore-reduced-size-version.html#cb28-2" aria-hidden="true" tabindex="-1"></a>dt_lag1 <span class="ot">=</span> <span class="fu">createLagged</span>(<span class="at">data =</span> dt1, <span class="at">lags =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span>), <span class="at">other.head =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), <span class="at">other.tail =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="the-lore-reduced-size-version.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt_lag1)</span>
+<span id="cb29-2"><a href="the-lore-reduced-size-version.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">##          date hour production loc1_lag1 loc2_lag1 loc3_lag1 loc4_lag1     loc1     loc2     loc3      loc4 loc1_lead1 loc2_lead1 loc3_lead1 loc4_lead1</span></span>
+<span id="cb29-3"><a href="the-lore-reduced-size-version.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1: 2017-01-02    1          0  1.490839  1.184061  1.141621 0.4410216 1.700052 1.307793 1.385103 0.6289321   1.910143   1.432977   1.628786  0.8169388</span></span>
+<span id="cb29-4"><a href="the-lore-reduced-size-version.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2: 2017-01-02    2          0  1.700052  1.307793  1.385103 0.6289321 1.910143 1.432977 1.628786 0.8169388   2.120849   1.559263   1.872592  1.0049876</span></span>
+<span id="cb29-5"><a href="the-lore-reduced-size-version.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: 2017-01-02    3          0  1.910143  1.432977  1.628786 0.8169388 2.120849 1.559263 1.872592 1.0049876   2.225062   1.552668   2.059827  0.9891467</span></span>
+<span id="cb29-6"><a href="the-lore-reduced-size-version.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4: 2017-01-02    4          0  2.120849  1.559263  1.872592 1.0049876 2.225062 1.552668 2.059827 0.9891467   2.332381   1.547259   2.249153  0.9741549</span></span>
+<span id="cb29-7"><a href="the-lore-reduced-size-version.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5: 2017-01-02    5          0  2.225062  1.552668  2.059827 0.9891467 2.332381 1.547259 2.249153 0.9741549   2.442396   1.543049   2.440082  0.9600521</span></span>
+<span id="cb29-8"><a href="the-lore-reduced-size-version.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6: 2017-01-02    6          0  2.332381  1.547259  2.249153 0.9741549 2.442396 1.543049 2.440082 0.9600521   2.311337   1.345251   2.382790  0.6608412</span></span>
+<span id="cb29-9"><a href="the-lore-reduced-size-version.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_lag1)</span>
+<span id="cb29-10"><a href="the-lore-reduced-size-version.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3598   15</span></span>
+<span id="cb29-11"><a href="the-lore-reduced-size-version.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_lag2)</span>
+<span id="cb29-12"><a href="the-lore-reduced-size-version.html#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3598   30</span></span></code></pre></div>
+<blockquote>
+<p>Notice that looking at only t-1 and t+1 triples the size of our data. Thinking about a time window of 7 hours may be problematic with bigger datasets.</p>
+</blockquote>
+</div>
+<div id="results-1" class="section level4" number="5.1.3.2">
+<h4><span class="header-section-number">5.1.3.2</span> Results:</h4>
+<p>Our approach is again same. We again used <em>cv.glmnet()</em>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="the-lore-reduced-size-version.html#cb30-1" aria-hidden="true" tabindex="-1"></a>dresults[<span class="fu">order</span>(station)] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;base&quot;</span>,<span class="st">&quot;lagged&quot;</span>))</span></code></pre></div>
+<pre><code>##     station  model train_error test_error
+##  1:  aliaga   base   16.115594  13.446084
+##  2:  aliaga lagged   15.819267  13.337983
+##  3:   bares   base    8.368780   6.469539
+##  4:   bares lagged    8.115166   6.476837
+##  5:   dinar   base   25.054550  19.934007
+##  6:   dinar lagged   24.704932  19.893682
+##  7:  geycek   base   21.612130  18.296658
+##  8:  geycek lagged   21.413134  17.767683
+##  9:    soke   base    7.570961   8.648788
+## 10:    soke lagged    7.451066   8.643861
+## 11:    soma   base   14.451429  13.176678
+## 12:    soma lagged   14.248784  13.019966</code></pre>
+<p>We see better results in all of the stations.</p>
+</div>
+</div>
+<div id="powered" class="section level3" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Powered</h3>
+<p>Recall the formula for “kinetic energy”:
+<span class="math display">\[
+E_k = \frac{1}{2} m v^2 \text{, where $m$ is mass and $v$ is velocity.}
+\]</span></p>
+<p>We can see that square of velocity is related with kinetic energy. Also previous studies show that cube of wind velocity is also correlated with wind energy production however we will be only using squares for sake of simplicity.</p>
+<p>Some information about the powered datasets:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="the-lore-reduced-size-version.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt_pow1)</span>
+<span id="cb32-2"><a href="the-lore-reduced-size-version.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">##          date hour production     loc1     loc2     loc3      loc4  loc1_p2  loc2_p2  loc3_p2   loc4_p2</span></span>
+<span id="cb32-3"><a href="the-lore-reduced-size-version.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1: 2017-01-02    0          0 1.490839 1.184061 1.141621 0.4410216 2.222600 1.402001 1.303299 0.1945001</span></span>
+<span id="cb32-4"><a href="the-lore-reduced-size-version.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2: 2017-01-02    1          0 1.700052 1.307793 1.385103 0.6289321 2.890178 1.710323 1.918511 0.3955556</span></span>
+<span id="cb32-5"><a href="the-lore-reduced-size-version.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: 2017-01-02    2          0 1.910143 1.432977 1.628786 0.8169388 3.648644 2.053423 2.652944 0.6673890</span></span>
+<span id="cb32-6"><a href="the-lore-reduced-size-version.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4: 2017-01-02    3          0 2.120849 1.559263 1.872592 1.0049876 4.498000 2.431300 3.506600 1.0100000</span></span>
+<span id="cb32-7"><a href="the-lore-reduced-size-version.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5: 2017-01-02    4          0 2.225062 1.552668 2.059827 0.9891467 4.950900 2.410778 4.242889 0.9784111</span></span>
+<span id="cb32-8"><a href="the-lore-reduced-size-version.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6: 2017-01-02    5          0 2.332381 1.547259 2.249153 0.9741549 5.440000 2.394011 5.058689 0.9489778</span></span>
+<span id="cb32-9"><a href="the-lore-reduced-size-version.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_pow1)</span>
+<span id="cb32-10"><a href="the-lore-reduced-size-version.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3600   11</span></span>
+<span id="cb32-11"><a href="the-lore-reduced-size-version.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_pow2)</span>
+<span id="cb32-12"><a href="the-lore-reduced-size-version.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3600   21</span></span></code></pre></div>
+<blockquote>
+<p>Note that this also doubles the size of our dataset. (what will happen when we will combine lag and power :) )</p>
+</blockquote>
+<p>Skipping the details, here are our results:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="the-lore-reduced-size-version.html#cb33-1" aria-hidden="true" tabindex="-1"></a>dresults[<span class="fu">order</span>(station)] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;base&quot;</span>,<span class="st">&quot;lagged&quot;</span>,<span class="st">&quot;powered&quot;</span>))</span></code></pre></div>
+<pre><code>##     station   model train_error test_error
+##  1:  aliaga    base   16.115594  13.446084
+##  2:  aliaga  lagged   15.819267  13.337983
+##  3:  aliaga powered   15.929062  13.466087
+##  4:   bares    base    8.368780   6.469539
+##  5:   bares  lagged    8.115166   6.476837
+##  6:   bares powered    8.187200   6.652139
+##  7:   dinar    base   25.054550  19.934007
+##  8:   dinar  lagged   24.704932  19.893682
+##  9:   dinar powered   23.836830  20.203461
+## 10:  geycek    base   21.612130  18.296658
+## 11:  geycek  lagged   21.413134  17.767683
+## 12:  geycek powered   20.743009  18.897305
+## 13:    soke    base    7.570961   8.648788
+## 14:    soke  lagged    7.451066   8.643861
+## 15:    soke powered    6.883059   8.060418
+## 16:    soma    base   14.451429  13.176678
+## 17:    soma  lagged   14.248784  13.019966
+## 18:    soma powered   13.869595  13.363834</code></pre>
+<p>We again see that adding powered features gives an improvement over the base case. Also, there is no visible ranking between lagged and powered models. In some stations lagged model is better, in others powered one significantly improves the performance.</p>
+<p>Let’s combine them:</p>
+</div>
+<div id="lagged-and-powered" class="section level3" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Lagged and Powered</h3>
+<p>We predict that using both temporal and nonlinear features will give us a better model. However with this section the dimensions will start to increase a lot.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="the-lore-reduced-size-version.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_lagpow1)</span>
+<span id="cb35-2"><a href="the-lore-reduced-size-version.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3598   27</span></span>
+<span id="cb35-3"><a href="the-lore-reduced-size-version.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_lagpow2)</span>
+<span id="cb35-4"><a href="the-lore-reduced-size-version.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3598   57</span></span></code></pre></div>
+<p>We used to have 4 or 9 features. Now we have 24 and 54 features. And note that we could have used a wider time window and take the cube of these features.</p>
+<p>With more detailed features our performance increased in all stations:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="the-lore-reduced-size-version.html#cb36-1" aria-hidden="true" tabindex="-1"></a>dresults[<span class="fu">order</span>(station)] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;base&quot;</span>,<span class="st">&quot;lagged&quot;</span>,<span class="st">&quot;powered&quot;</span>, <span class="st">&quot;lagged + powered&quot;</span>))</span></code></pre></div>
+<pre><code>##     station            model train_error test_error
+##  1:  aliaga             base   16.115594  13.446084
+##  2:  aliaga           lagged   15.819267  13.337983
+##  3:  aliaga          powered   15.929062  13.466087
+##  4:  aliaga lagged + powered   15.613828  13.392450
+##  5:   bares             base    8.368780   6.469539
+##  6:   bares           lagged    8.115166   6.476837
+##  7:   bares          powered    8.187200   6.652139
+##  8:   bares lagged + powered    8.003236   6.630835
+##  9:   dinar             base   25.054550  19.934007
+## 10:   dinar           lagged   24.704932  19.893682
+## 11:   dinar          powered   23.836830  20.203461
+## 12:   dinar lagged + powered   23.287946  19.776765
+## 13:  geycek             base   21.612130  18.296658
+## 14:  geycek           lagged   21.413134  17.767683
+## 15:  geycek          powered   20.743009  18.897305
+## 16:  geycek lagged + powered   20.441426  18.363553
+## 17:    soke             base    7.570961   8.648788
+## 18:    soke           lagged    7.451066   8.643861
+## 19:    soke          powered    6.883059   8.060418
+## 20:    soke lagged + powered    6.789591   8.074436
+## 21:    soma             base   14.451429  13.176678
+## 22:    soma           lagged   14.248784  13.019966
+## 23:    soma          powered   13.869595  13.363834
+## 24:    soma lagged + powered   13.551715  13.056804
+##     station            model train_error test_error</code></pre>
+</div>
+<div id="polynomial" class="section level3" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Polynomial</h3>
+<p>As we have shown that all these derived features improve our performance, also again thinking about the fluid dynamics, we think that polynomials of wind speed features would give another nonlinear and temporal perspective.</p>
+<p>We will be using <em>polym()</em> function for creating our polynomial data:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="the-lore-reduced-size-version.html#cb38-1" aria-hidden="true" tabindex="-1"></a>dt_poly1 <span class="ot">=</span> <span class="fu">cbind</span>(dt1[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="fu">polym</span>(<span class="fu">as.matrix</span>(dt1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]),<span class="at">degree =</span> <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>)) <span class="co"># raw=TRUE means:: dont&#39; scale</span></span></code></pre></div>
+<p>Checking the dimensions:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="the-lore-reduced-size-version.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt_poly1)</span>
+<span id="cb39-2"><a href="the-lore-reduced-size-version.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="do">##          date hour production  1.0.0.0  2.0.0.0  0.1.0.0  1.1.0.0  0.2.0.0  0.0.1.0  1.0.1.0  0.1.1.0  0.0.2.0   0.0.0.1   1.0.0.1   0.1.0.1   0.0.1.1   0.0.0.2</span></span>
+<span id="cb39-3"><a href="the-lore-reduced-size-version.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1: 2017-01-02    0          0 1.490839 2.222600 1.184061 1.765245 1.402001 1.141621 1.701973 1.351750 1.303299 0.4410216 0.6574921 0.5221967 0.5034797 0.1945001</span></span>
+<span id="cb39-4"><a href="the-lore-reduced-size-version.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2: 2017-01-02    1          0 1.700052 2.890178 1.307793 2.223317 1.710323 1.385103 2.354748 1.811428 1.918511 0.6289321 1.0692175 0.8225132 0.8711358 0.3955556</span></span>
+<span id="cb39-5"><a href="the-lore-reduced-size-version.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: 2017-01-02    2          0 1.910143 3.648644 1.432977 2.737190 2.053423 1.628786 3.111214 2.334013 2.652944 0.8169388 1.5604695 1.1706544 1.3306185 0.6673890</span></span>
+<span id="cb39-6"><a href="the-lore-reduced-size-version.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4: 2017-01-02    3          0 2.120849 4.498000 1.559263 3.306960 2.431300 1.872592 3.971484 2.919862 3.506600 1.0049876 2.1314268 1.5670396 1.8819315 1.0100000</span></span>
+<span id="cb39-7"><a href="the-lore-reduced-size-version.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5: 2017-01-02    4          0 2.225062 4.950900 1.552668 3.454782 2.410778 2.059827 4.583243 3.198228 4.242889 0.9891467 2.2009124 1.5358163 2.0374714 0.9784111</span></span>
+<span id="cb39-8"><a href="the-lore-reduced-size-version.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6: 2017-01-02    5          0 2.332381 5.440000 1.547259 3.608798 2.394011 2.249153 5.245881 3.480023 5.058689 0.9741549 2.2721002 1.5072702 2.1910234 0.9489778</span></span>
+<span id="cb39-9"><a href="the-lore-reduced-size-version.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_poly1)</span>
+<span id="cb39-10"><a href="the-lore-reduced-size-version.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3600   17</span></span>
+<span id="cb39-11"><a href="the-lore-reduced-size-version.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_poly2)</span>
+<span id="cb39-12"><a href="the-lore-reduced-size-version.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3600   57</span></span></code></pre></div>
+<p>With polynomials, the dimensions increase even faster. (It is a fun exercise to write a function for calculating how many features there will be for different degrees of polynomials.)</p>
+<p>Not to bore you with details our results are as follows:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="the-lore-reduced-size-version.html#cb40-1" aria-hidden="true" tabindex="-1"></a>dresults[<span class="fu">order</span>(station)] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;base&quot;</span>,<span class="st">&quot;lagged&quot;</span>,<span class="st">&quot;powered&quot;</span>, <span class="st">&quot;lagged + powered&quot;</span>, <span class="st">&quot;poly(2)&quot;</span>))</span></code></pre></div>
+<pre><code>##     station            model train_error test_error
+##  1:  aliaga             base   16.115594  13.446084
+##  2:  aliaga           lagged   15.819267  13.337983
+##  3:  aliaga          powered   15.929062  13.466087
+##  4:  aliaga lagged + powered   15.613828  13.392450
+##  5:  aliaga          poly(2)   15.284348  13.547195
+##  6:   bares             base    8.368780   6.469539
+##  7:   bares           lagged    8.115166   6.476837
+##  8:   bares          powered    8.187200   6.652139
+##  9:   bares lagged + powered    8.003236   6.630835
+## 10:   bares          poly(2)    8.024843   6.630476
+## 11:   dinar             base   25.054550  19.934007
+## 12:   dinar           lagged   24.704932  19.893682
+## 13:   dinar          powered   23.836830  20.203461
+## 14:   dinar lagged + powered   23.287946  19.776765
+## 15:   dinar          poly(2)   23.456418  20.640282
+## 16:  geycek             base   21.612130  18.296658
+## 17:  geycek           lagged   21.413134  17.767683
+## 18:  geycek          powered   20.743009  18.897305
+## 19:  geycek lagged + powered   20.441426  18.363553
+## 20:  geycek          poly(2)   20.410482  19.122731
+## 21:    soke             base    7.570961   8.648788
+## 22:    soke           lagged    7.451066   8.643861
+## 23:    soke          powered    6.883059   8.060418
+## 24:    soke lagged + powered    6.789591   8.074436
+## 25:    soke          poly(2)    6.717682   7.934136
+## 26:    soma             base   14.451429  13.176678
+## 27:    soma           lagged   14.248784  13.019966
+## 28:    soma          powered   13.869595  13.363834
+## 29:    soma lagged + powered   13.551715  13.056804
+## 30:    soma          poly(2)   13.487807  13.253549
+##     station            model train_error test_error</code></pre>
+<p>We were hoping to outperform the powered models. We sure did. However we see that in some stations lagged+powered models are better. So we think that using polynomial features from the past can improve our model even more!</p>
+</div>
+<div id="polynomial-then-lagged" class="section level3" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> Polynomial then Lagged</h3>
+<p>Did you notice something weird in the title? Why didn’t we just say Polynomial + Lagged or Lagged + Polynomial, just like in Lagged + Powered?</p>
+<p>Because now we are only interested in the polynomial combinations of our features and their results in different time indices. It is much easier than checking the polynomial combinations of lagged results.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="the-lore-reduced-size-version.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dt_polylag1)</span>
+<span id="cb42-2"><a href="the-lore-reduced-size-version.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;date&quot;          &quot;hour&quot;          &quot;production&quot;    &quot;1.0.0.0_lag1&quot;  &quot;2.0.0.0_lag1&quot;  &quot;0.1.0.0_lag1&quot;  &quot;1.1.0.0_lag1&quot;  &quot;0.2.0.0_lag1&quot;  &quot;0.0.1.0_lag1&quot;  &quot;1.0.1.0_lag1&quot; </span></span>
+<span id="cb42-3"><a href="the-lore-reduced-size-version.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [11] &quot;0.1.1.0_lag1&quot;  &quot;0.0.2.0_lag1&quot;  &quot;0.0.0.1_lag1&quot;  &quot;1.0.0.1_lag1&quot;  &quot;0.1.0.1_lag1&quot;  &quot;0.0.1.1_lag1&quot;  &quot;0.0.0.2_lag1&quot;  &quot;1.0.0.0&quot;       &quot;2.0.0.0&quot;       &quot;0.1.0.0&quot;      </span></span>
+<span id="cb42-4"><a href="the-lore-reduced-size-version.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] &quot;1.1.0.0&quot;       &quot;0.2.0.0&quot;       &quot;0.0.1.0&quot;       &quot;1.0.1.0&quot;       &quot;0.1.1.0&quot;       &quot;0.0.2.0&quot;       &quot;0.0.0.1&quot;       &quot;1.0.0.1&quot;       &quot;0.1.0.1&quot;       &quot;0.0.1.1&quot;      </span></span>
+<span id="cb42-5"><a href="the-lore-reduced-size-version.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [31] &quot;0.0.0.2&quot;       &quot;1.0.0.0_lead1&quot; &quot;2.0.0.0_lead1&quot; &quot;0.1.0.0_lead1&quot; &quot;1.1.0.0_lead1&quot; &quot;0.2.0.0_lead1&quot; &quot;0.0.1.0_lead1&quot; &quot;1.0.1.0_lead1&quot; &quot;0.1.1.0_lead1&quot; &quot;0.0.2.0_lead1&quot;</span></span>
+<span id="cb42-6"><a href="the-lore-reduced-size-version.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [41] &quot;0.0.0.1_lead1&quot; &quot;1.0.0.1_lead1&quot; &quot;0.1.0.1_lead1&quot; &quot;0.0.1.1_lead1&quot; &quot;0.0.0.2_lead1&quot;</span></span>
+<span id="cb42-7"><a href="the-lore-reduced-size-version.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_polylag1)</span>
+<span id="cb42-8"><a href="the-lore-reduced-size-version.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3598   45</span></span>
+<span id="cb42-9"><a href="the-lore-reduced-size-version.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dt_polylag2)</span>
+<span id="cb42-10"><a href="the-lore-reduced-size-version.html#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3598  165</span></span></code></pre></div>
+<p>Now the dimensions of our datasets are tripled compared to the polynomial data. It is again a huge increase but the following section will be scarier.</p>
+<p>Looking at the results:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="the-lore-reduced-size-version.html#cb43-1" aria-hidden="true" tabindex="-1"></a>dresults[<span class="fu">order</span>(station)] <span class="sc">%&gt;%</span> <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;base&quot;</span>,<span class="st">&quot;lagged&quot;</span>,<span class="st">&quot;powered&quot;</span>, <span class="st">&quot;lagged + powered&quot;</span>, <span class="st">&quot;poly(2)&quot;</span>, <span class="st">&quot;poly(2) &gt; lag&quot;</span>))</span></code></pre></div>
+<pre><code>##     station            model train_error test_error
+##  1:  aliaga             base   16.115594  13.446084
+##  2:  aliaga           lagged   15.819267  13.337983
+##  3:  aliaga          powered   15.929062  13.466087
+##  4:  aliaga lagged + powered   15.613828  13.392450
+##  5:  aliaga          poly(2)   15.284348  13.547195
+##  6:  aliaga    poly(2) &gt; lag   15.061376  13.356530
+##  7:   bares             base    8.368780   6.469539
+##  8:   bares           lagged    8.115166   6.476837
+##  9:   bares          powered    8.187200   6.652139
+## 10:   bares lagged + powered    8.003236   6.630835
+## 11:   bares          poly(2)    8.024843   6.630476
+## 12:   bares    poly(2) &gt; lag    7.841424   6.523750
+## 13:   dinar             base   25.054550  19.934007
+## 14:   dinar           lagged   24.704932  19.893682
+## 15:   dinar          powered   23.836830  20.203461
+## 16:   dinar lagged + powered   23.287946  19.776765
+## 17:   dinar          poly(2)   23.456418  20.640282
+## 18:   dinar    poly(2) &gt; lag   22.247506  19.667580
+## 19:  geycek             base   21.612130  18.296658
+## 20:  geycek           lagged   21.413134  17.767683
+## 21:  geycek          powered   20.743009  18.897305
+## 22:  geycek lagged + powered   20.441426  18.363553
+## 23:  geycek          poly(2)   20.410482  19.122731
+## 24:  geycek    poly(2) &gt; lag   20.116372  18.523240
+## 25:    soke             base    7.570961   8.648788
+## 26:    soke           lagged    7.451066   8.643861
+## 27:    soke          powered    6.883059   8.060418
+## 28:    soke lagged + powered    6.789591   8.074436
+## 29:    soke          poly(2)    6.717682   7.934136
+## 30:    soke    poly(2) &gt; lag    6.647820   7.965204
+## 31:    soma             base   14.451429  13.176678
+## 32:    soma           lagged   14.248784  13.019966
+## 33:    soma          powered   13.869595  13.363834
+## 34:    soma lagged + powered   13.551715  13.056804
+## 35:    soma          poly(2)   13.487807  13.253549
+## 36:    soma    poly(2) &gt; lag   13.065487  12.976022
+##     station            model train_error test_error</code></pre>
+<p>Great results! We have seen nice improvements in all stations.</p>
+<p>Now we have another question in our mind: can polynomial combinations of features from different times be useful ,too, for our forecasting?</p>
+</div>
+<div id="polynomial-of-lagged-lagged-then-polynomial" class="section level3" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Polynomial of Lagged (Lagged then Polynomial)</h3>
+<p>Now we will combine features from different times. As we are looking at a time window of only size 3 and on 4 locations, things should not be very big. However with a wider time window and more locations this exercise may only make things complicated.</p>
+<p>While trying to create polynomials for stations 2 to 6 we get the following error:
+&gt; Error: vector memory exhausted (limit reached?)</p>
+<p>As we can see our memory is not enough. This problem can be solved but we will stop there for now and in the next chapter we will try to handle this.</p>
+<p>However we were able to create the dataset for station1, let’s see its performance:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="the-lore-reduced-size-version.html#cb45-1" aria-hidden="true" tabindex="-1"></a>fit.lagpoly1 <span class="ot">=</span> <span class="fu">cv.glmnet</span>(<span class="at">x =</span> <span class="fu">as.matrix</span>(dt_lagpoly1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]), <span class="at">y =</span> dt_lagpoly1<span class="sc">$</span>production, <span class="at">type.measure =</span> <span class="st">&#39;mae&#39;</span>)</span>
+<span id="cb45-2"><a href="the-lore-reduced-size-version.html#cb45-2" aria-hidden="true" tabindex="-1"></a>error.train1 <span class="ot">=</span> <span class="fu">min</span>(fit.lagpoly1<span class="sc">$</span>cvup)</span>
+<span id="cb45-3"><a href="the-lore-reduced-size-version.html#cb45-3" aria-hidden="true" tabindex="-1"></a>pred.test1 <span class="ot">=</span> <span class="fu">predict</span>(fit.lagpoly1, <span class="fu">as.matrix</span>(dte_lagpoly1[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]), <span class="at">s =</span> <span class="st">&quot;lambda.1se&quot;</span>)</span>
+<span id="cb45-4"><a href="the-lore-reduced-size-version.html#cb45-4" aria-hidden="true" tabindex="-1"></a>error.test1 <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">abs</span>(pred.test1 <span class="sc">-</span> dte_lagpoly1<span class="sc">$</span>production))</span>
+<span id="cb45-5"><a href="the-lore-reduced-size-version.html#cb45-5" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">station =</span> <span class="st">&quot;aliaga&quot;</span>, <span class="at">model =</span> <span class="st">&quot;lag &gt; poly(2)&quot;</span>, <span class="at">train_error =</span> error.train1, <span class="at">test_error =</span> error.test1)</span>
+<span id="cb45-6"><a href="the-lore-reduced-size-version.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(dresults <span class="sc">%&gt;%</span> <span class="fu">filter</span>(station <span class="sc">==</span> <span class="st">&quot;aliaga&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;base&quot;</span>,<span class="st">&quot;lagged&quot;</span>,<span class="st">&quot;powered&quot;</span>, <span class="st">&quot;lagged + powered&quot;</span>, <span class="st">&quot;poly(2)&quot;</span>, <span class="st">&quot;poly(2) &gt; lag&quot;</span>)), res1)</span></code></pre></div>
+<pre><code>##    station            model train_error test_error
+## 1:  aliaga             base    16.11559   13.44608
+## 2:  aliaga           lagged    15.81927   13.33798
+## 3:  aliaga          powered    15.92906   13.46609
+## 4:  aliaga lagged + powered    15.61383   13.39245
+## 5:  aliaga          poly(2)    15.28435   13.54719
+## 6:  aliaga    poly(2) &gt; lag    15.06138   13.35653
+## 7:  aliaga    lag &gt; poly(2)    14.99202   13.37232</code></pre>
+<p>We were able to reduce our error, once more. This is a good motivation for us to move on. Before finalizing this section let’s try one more thing.</p>
+</div>
+<div id="polynomial-of-degree-3" class="section level3" number="5.1.9">
+<h3><span class="header-section-number">5.1.9</span> Polynomial of degree 3</h3>
+<p>Just for future motivation, lets try the base model of polynomial with degree 3:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="the-lore-reduced-size-version.html#cb47-1" aria-hidden="true" tabindex="-1"></a>dresults[<span class="fu">order</span>(station)]</span></code></pre></div>
+<pre><code>##     station            model train_error test_error
+##  1:  aliaga             base   16.115594  13.446084
+##  2:  aliaga           lagged   15.819267  13.337983
+##  3:  aliaga          powered   15.929062  13.466087
+##  4:  aliaga lagged + powered   15.613828  13.392450
+##  5:  aliaga          poly(2)   15.284348  13.547195
+##  6:  aliaga    poly(2) &gt; lag   15.061376  13.356530
+##  7:  aliaga          poly(3)   13.932274  12.602298
+##  8:   bares             base    8.368780   6.469539
+##  9:   bares           lagged    8.115166   6.476837
+## 10:   bares          powered    8.187200   6.652139
+## 11:   bares lagged + powered    8.003236   6.630835
+## 12:   bares          poly(2)    8.024843   6.630476
+## 13:   bares    poly(2) &gt; lag    7.841424   6.523750
+## 14:   bares          poly(3)    7.366621   6.156572
+## 15:   dinar             base   25.054550  19.934007
+## 16:   dinar           lagged   24.704932  19.893682
+## 17:   dinar          powered   23.836830  20.203461
+## 18:   dinar lagged + powered   23.287946  19.776765
+## 19:   dinar          poly(2)   23.456418  20.640282
+## 20:   dinar    poly(2) &gt; lag   22.247506  19.667580
+## 21:   dinar          poly(3)   21.762741  18.844985
+## 22:  geycek             base   21.612130  18.296658
+## 23:  geycek           lagged   21.413134  17.767683
+## 24:  geycek          powered   20.743009  18.897305
+## 25:  geycek lagged + powered   20.441426  18.363553
+## 26:  geycek          poly(2)   20.410482  19.122731
+## 27:  geycek    poly(2) &gt; lag   20.116372  18.523240
+## 28:  geycek          poly(3)   18.541052  17.200868
+## 29:    soke             base    7.570961   8.648788
+## 30:    soke           lagged    7.451066   8.643861
+## 31:    soke          powered    6.883059   8.060418
+## 32:    soke lagged + powered    6.789591   8.074436
+## 33:    soke          poly(2)    6.717682   7.934136
+## 34:    soke    poly(2) &gt; lag    6.647820   7.965204
+## 35:    soke          poly(3)    6.599493   7.894552
+## 36:    soma             base   14.451429  13.176678
+## 37:    soma           lagged   14.248784  13.019966
+## 38:    soma          powered   13.869595  13.363834
+## 39:    soma lagged + powered   13.551715  13.056804
+## 40:    soma          poly(2)   13.487807  13.253549
+## 41:    soma    poly(2) &gt; lag   13.065487  12.976022
+## 42:    soma          poly(3)   12.364350  11.836208
+##     station            model train_error test_error</code></pre>
+<p>Wow! Our poly(3) models are outperforming poly(2)&gt;lag models. However combination of lag and poly(3) would again create dimension problems. So we stop here.</p>
+</div>
+<div id="final-words" class="section level3" number="5.1.10">
+<h3><span class="header-section-number">5.1.10</span> Final Words</h3>
+<p>In this section, we have shown that there are many ways to derive new features that increases performance. However with more features more problems occur, especially because of size. In the following section we will try to keep our dimensions low while trying to make use of these new features.</p>
+<p>We will talk about:</p>
+<ol style="list-style-type: decimal">
+<li>Sparse Polynomials</li>
+<li>Principal Component Analysis (PCA)</li>
+<li>Kronecker PCA</li>
+<li>Sparse Kronecker PCA</li>
+<li>Kernel PCA
+…</li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dimension-reduction-incomplete.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/canhakan/wind_book/edit/master/05-QandA.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/canhakan/wind_book/blob/master/05-QandA.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
