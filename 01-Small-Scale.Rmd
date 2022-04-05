@@ -283,9 +283,10 @@ Wow! Our poly(3) models are outperforming poly(2)>lag models. However combinatio
 
 ```{r}
 # dlevel_order is factorized version of "models". needed for ordered model names
-ggplot(dresults) +
+plot1 = ggplot(dresults) +
     geom_point(mapping = aes(x = dlevel_order, y = train_error, color = station)) +
     labs(x = "Models", y = "Mean Absolute Error", title = "Final Results", subtitle = "Error Comparison")
+print(plot1)
 ```
 
 
