@@ -1,8 +1,9 @@
 # dummy_main
 # Main
 
-# MY THINGS DONE IN A SMALLER REGION AND A SHORTER TIME PERIOD
-# ALL THE BASIC RESULTS ARE AS WANTED BUT TEST ERROR IS USUALLY SMALLER THAN TRAIN ERROR (NOT A BIG BIG PROBLEM AS WE THINK THAT TEST IS ON JUNE BUT TRAIN HAS MORE STORMY WEATHERS)
+# SAME THINGS, DONE IN A SMALLER REGION AND A SHORTER TIME PERIOD
+# ALL THE BASIC RESULTS ARE AS WANTED BUT TEST ERROR IS USUALLY SMALLER THAN TRAIN ERROR
+# (NOT A BIG BIG PROBLEM AS WE THINK THAT TEST IS ON JUNE BUT TRAIN HAS MORE STORMY WEATHERS)
 
 # book render -------------------------------------------------------------
 bookdown::render_book("index.Rmd")
@@ -11,22 +12,22 @@ browseURL("docs/index.html")
 
 # reduce data dimensions --------------------------------------------------
 # using 6 months (5 train 1 test)
-dum1 = data1[1:4320, c(1:5,7,8)] # 2x2 yapalim (orjinali 3x3)
-dum2 = data2[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
-dum3 = data3[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
-dum4 = data4[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
-dum5 = data5[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
-dum6 = data6[1:4320, c(1:12)] # 3x3 yapalim (orjinali 3x4)
+dum1 <- data1[1:4320, c(1:5, 7, 8)] # 2x2 yapalim (orjinali 3x3)
+dum2 <- data2[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
+dum3 <- data3[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
+dum4 <- data4[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
+dum5 <- data5[1:4320, c(1:6, 8:10, 12:14)] # 3x3 yapalim (orjinali 4x4)
+dum6 <- data6[1:4320, c(1:12)] # 3x3 yapalim (orjinali 3x4)
 
 
 # new colnames ------------------------------------------------------------
 
-colnames(dum1)[6:7] = c("loc3", "loc4")
+colnames(dum1)[6:7] <- c("loc3", "loc4")
 #
-colnames(dum2)[7:12] = c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
-colnames(dum3)[7:12] = c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
-colnames(dum4)[7:12] = c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
-colnames(dum5)[7:12] = c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
+colnames(dum2)[7:12] <- c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
+colnames(dum3)[7:12] <- c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
+colnames(dum4)[7:12] <- c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
+colnames(dum5)[7:12] <- c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
 #
 # colnames(dum6) stays same
 
@@ -35,94 +36,94 @@ colnames(dum5)[7:12] = c("loc4", "loc5", "loc6", "loc7", "loc8", "loc9")
 
 # train/test
 
-dt1 = dum1[1 : 3600, ]
-dt2 = dum2[1 : 3600, ]
-dt3 = dum3[1 : 3600, ]
-dt4 = dum4[1 : 3600, ]
-dt5 = dum5[1 : 3600, ]
-dt6 = dum6[1 : 3600, ]
+dt1 <- dum1[1:3600, ]
+dt2 <- dum2[1:3600, ]
+dt3 <- dum3[1:3600, ]
+dt4 <- dum4[1:3600, ]
+dt5 <- dum5[1:3600, ]
+dt6 <- dum6[1:3600, ]
 
-dte1  = dum1[3601 : 4320, ]
-dte2  = dum2[3601 : 4320, ]
-dte3  = dum3[3601 : 4320, ]
-dte4  = dum4[3601 : 4320, ]
-dte5  = dum5[3601 : 4320, ]
-dte6  = dum6[3601 : 4320, ]
+dte1 <- dum1[3601:4320, ]
+dte2 <- dum2[3601:4320, ]
+dte3 <- dum3[3601:4320, ]
+dte4 <- dum4[3601:4320, ]
+dte5 <- dum5[3601:4320, ]
+dte6 <- dum6[3601:4320, ]
 dim(dte1)
 # lag
-dt_lag1 = createLagged(data = dt1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lag2 = createLagged(data = dt2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lag3 = createLagged(data = dt3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lag4 = createLagged(data = dt4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lag5 = createLagged(data = dt5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lag6 = createLagged(data = dt6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lag1 <- createLagged(data = dt1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lag2 <- createLagged(data = dt2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lag3 <- createLagged(data = dt3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lag4 <- createLagged(data = dt4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lag5 <- createLagged(data = dt5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lag6 <- createLagged(data = dt6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
 
-dte_lag1 = createLagged(data = dte1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lag2 = createLagged(data = dte2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lag3 = createLagged(data = dte3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lag4 = createLagged(data = dte4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lag5 = createLagged(data = dte5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lag6 = createLagged(data = dte6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lag1 <- createLagged(data = dte1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lag2 <- createLagged(data = dte2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lag3 <- createLagged(data = dte3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lag4 <- createLagged(data = dte4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lag5 <- createLagged(data = dte5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lag6 <- createLagged(data = dte6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
 
 # power3
-dt_pow1 = createPowered(data = dt1, powers = 2, other.head = c(1:3), other.tail = 0)
-dt_pow2 = createPowered(data = dt2, powers = 2, other.head = c(1:3), other.tail = 0)
-dt_pow3 = createPowered(data = dt3, powers = 2, other.head = c(1:3), other.tail = 0)
-dt_pow4 = createPowered(data = dt4, powers = 2, other.head = c(1:3), other.tail = 0)
-dt_pow5 = createPowered(data = dt5, powers = 2, other.head = c(1:3), other.tail = 0)
-dt_pow6 = createPowered(data = dt6, powers = 2, other.head = c(1:3), other.tail = 0)
+dt_pow1 <- createPowered(data = dt1, powers = 2, other.head = c(1:3), other.tail = 0)
+dt_pow2 <- createPowered(data = dt2, powers = 2, other.head = c(1:3), other.tail = 0)
+dt_pow3 <- createPowered(data = dt3, powers = 2, other.head = c(1:3), other.tail = 0)
+dt_pow4 <- createPowered(data = dt4, powers = 2, other.head = c(1:3), other.tail = 0)
+dt_pow5 <- createPowered(data = dt5, powers = 2, other.head = c(1:3), other.tail = 0)
+dt_pow6 <- createPowered(data = dt6, powers = 2, other.head = c(1:3), other.tail = 0)
 
-dte_pow1 = createPowered(data = dte1, powers = 2, other.head = c(1:3), other.tail = 0)
-dte_pow2 = createPowered(data = dte2, powers = 2, other.head = c(1:3), other.tail = 0)
-dte_pow3 = createPowered(data = dte3, powers = 2, other.head = c(1:3), other.tail = 0)
-dte_pow4 = createPowered(data = dte4, powers = 2, other.head = c(1:3), other.tail = 0)
-dte_pow5 = createPowered(data = dte5, powers = 2, other.head = c(1:3), other.tail = 0)
-dte_pow6 = createPowered(data = dte6, powers = 2, other.head = c(1:3), other.tail = 0)
+dte_pow1 <- createPowered(data = dte1, powers = 2, other.head = c(1:3), other.tail = 0)
+dte_pow2 <- createPowered(data = dte2, powers = 2, other.head = c(1:3), other.tail = 0)
+dte_pow3 <- createPowered(data = dte3, powers = 2, other.head = c(1:3), other.tail = 0)
+dte_pow4 <- createPowered(data = dte4, powers = 2, other.head = c(1:3), other.tail = 0)
+dte_pow5 <- createPowered(data = dte5, powers = 2, other.head = c(1:3), other.tail = 0)
+dte_pow6 <- createPowered(data = dte6, powers = 2, other.head = c(1:3), other.tail = 0)
 # temporal
-dt_temp1 = createTemporal(dt1,2,c(1:3))
-dt_temp2 = createTemporal(dt2,2,c(1:3))
-dt_temp3 = createTemporal(dt3,2,c(1:3))
-dt_temp4 = createTemporal(dt4,2,c(1:3))
-dt_temp5 = createTemporal(dt5,2,c(1:3))
-dt_temp6 = createTemporal(dt6,2,c(1:3))
+dt_temp1 <- createTemporal(dt1, 2, c(1:3))
+dt_temp2 <- createTemporal(dt2, 2, c(1:3))
+dt_temp3 <- createTemporal(dt3, 2, c(1:3))
+dt_temp4 <- createTemporal(dt4, 2, c(1:3))
+dt_temp5 <- createTemporal(dt5, 2, c(1:3))
+dt_temp6 <- createTemporal(dt6, 2, c(1:3))
 
-dte_temp1 = createTemporal(dte1,2,c(1:3))
-dte_temp2 = createTemporal(dte2,2,c(1:3))
-dte_temp3 = createTemporal(dte3,2,c(1:3))
-dte_temp4 = createTemporal(dte4,2,c(1:3))
-dte_temp5 = createTemporal(dte5,2,c(1:3))
-dte_temp6 = createTemporal(dte6,2,c(1:3))
+dte_temp1 <- createTemporal(dte1 ,2, c(1:3))
+dte_temp2 <- createTemporal(dte2 ,2, c(1:3))
+dte_temp3 <- createTemporal(dte3 ,2, c(1:3))
+dte_temp4 <- createTemporal(dte4 ,2, c(1:3))
+dte_temp5 <- createTemporal(dte5 ,2, c(1:3))
+dte_temp6 <- createTemporal(dte6 ,2, c(1:3))
 
 # lag and power
-dt_lagpow1 = createLagged(data = dt_pow1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lagpow2 = createLagged(data = dt_pow2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lagpow3 = createLagged(data = dt_pow3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lagpow4 = createLagged(data = dt_pow4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lagpow5 = createLagged(data = dt_pow5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dt_lagpow6 = createLagged(data = dt_pow6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lagpow1 <- createLagged(data = dt_pow1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lagpow2 <- createLagged(data = dt_pow2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lagpow3 <- createLagged(data = dt_pow3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lagpow4 <- createLagged(data = dt_pow4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lagpow5 <- createLagged(data = dt_pow5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dt_lagpow6 <- createLagged(data = dt_pow6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
 
-dte_lagpow1 = createLagged(data = dte_pow1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lagpow2 = createLagged(data = dte_pow2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lagpow3 = createLagged(data = dte_pow3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lagpow4 = createLagged(data = dte_pow4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lagpow5 = createLagged(data = dte_pow5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
-dte_lagpow6 = createLagged(data = dte_pow6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lagpow1 <- createLagged(data = dte_pow1, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lagpow2 <- createLagged(data = dte_pow2, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lagpow3 <- createLagged(data = dte_pow3, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lagpow4 <- createLagged(data = dte_pow4, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lagpow5 <- createLagged(data = dte_pow5, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
+dte_lagpow6 <- createLagged(data = dte_pow6, lags = c(-1:1), other.head = c(1:3), other.tail = 0)
 
 # Results Table -----------------------------------------------------------
-dresults = data.table(station = character(),
-                      model = character(),
-                      train_error = numeric(),
-                      test_error = numeric())
+dresults <- data.table(station = character(),
+                       model = character(),
+                       train_error = numeric(),
+                       test_error = numeric())
 
 dresults[order(station)]
 
 # Base Model --------------------------------------------------------------
-dfit1 = cv.glmnet(x = as.matrix(dt1[,-c(1:3)]), y = dt1$production, type.measure = "mae")
-dfit2 = cv.glmnet(x = as.matrix(dt2[,-c(1:3)]), y = dt2$production, type.measure = "mae")
-dfit3 = cv.glmnet(x = as.matrix(dt3[,-c(1:3)]), y = dt3$production, type.measure = "mae")
-dfit4 = cv.glmnet(x = as.matrix(dt4[,-c(1:3)]), y = dt4$production, type.measure = "mae")
-dfit5 = cv.glmnet(x = as.matrix(dt5[,-c(1:3)]), y = dt5$production, type.measure = "mae")
-dfit6 = cv.glmnet(x = as.matrix(dt6[,-c(1:3)]), y = dt6$production, type.measure = "mae")
+dfit1 <- cv.glmnet(x = as.matrix(dt1[, -c(1:3)]), y = dt1$production, type.measure = "mae")
+dfit2 <- cv.glmnet(x = as.matrix(dt2[, -c(1:3)]), y = dt2$production, type.measure = "mae")
+dfit3 <- cv.glmnet(x = as.matrix(dt3[, -c(1:3)]), y = dt3$production, type.measure = "mae")
+dfit4 <- cv.glmnet(x = as.matrix(dt4[, -c(1:3)]), y = dt4$production, type.measure = "mae")
+dfit5 <- cv.glmnet(x = as.matrix(dt5[, -c(1:3)]), y = dt5$production, type.measure = "mae")
+dfit6 <- cv.glmnet(x = as.matrix(dt6[, -c(1:3)]), y = dt6$production, type.measure = "mae")
 
 # # look at coeffs:
 # predict(dfit1,type="coef")
@@ -135,12 +136,12 @@ dfit6 = cv.glmnet(x = as.matrix(dt6[,-c(1:3)]), y = dt6$production, type.measure
 # dpred5 = predict(dfit5, as.matrix(dt5[,4:12]), s = "lambda.1se")
 # dpred6 = predict(dfit6, as.matrix(dt6[,4:12]), s = "lambda.1se")
 
-error.train1 = min(dfit1$cvup)
-error.train2 = min(dfit2$cvup)
-error.train3 = min(dfit3$cvup)
-error.train4 = min(dfit4$cvup)
-error.train5 = min(dfit5$cvup)
-error.train6 = min(dfit6$cvup)
+error.train1 <- min(dfit1$cvup)
+error.train2 <- min(dfit2$cvup)
+error.train3 <- min(dfit3$cvup)
+error.train4 <- min(dfit4$cvup)
+error.train5 <- min(dfit5$cvup)
+error.train6 <- min(dfit6$cvup)
 
 pred.test1 = predict(dfit1, as.matrix(dte1[,-c(1:3)]), s = "lambda.1se")
 pred.test2 = predict(dfit2, as.matrix(dte2[,-c(1:3)]), s = "lambda.1se")

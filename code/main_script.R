@@ -20,7 +20,7 @@ require(tidyr)
 require(tidyverse)
 #
 require(knitr)
-
+head(data1)
 
 # Load Data ---------------------------------------------------------------
 data1 = read.csv(file = "/Users/canhakan/tez/models_main/stations/aliaga.csv")
@@ -353,5 +353,25 @@ results[order(station)]
 
 
 
+
+# some plots (sonra sil) --------------------------------------------------------------
+
+length(pred.test1)  # 8278
+sum(pred.test1 < 0) # 1529
+# tahminin %18i 0dan kucuk
+
+i_start = 2000
+i_end   = 3000
+plot(ts(pred.test1[i_start:i_end]), col = 'red')
+lines(ts(laggedpowered.test1$production[i_start:i_end]))
+
+plot(ts(pred1[i_start:i_end]), col = 'red')
+lines(ts(laggedpowered1$production[i_start:i_end]))
+
+
+plot(ts(pred2[i_start:i_end]), col = 'red')
+lines(ts(laggedpowered2$production[i_start:i_end]))
+
+hist(laggedpowered.test2$production)
 
 

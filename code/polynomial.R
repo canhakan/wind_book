@@ -33,7 +33,6 @@ poly3Make <- function(data, nlat, nlon){
     res = res[,-1]
     return(res)
 }
-
 # Create Data ------------------------------------------------------------------
 
 spoly1 = poly3Make(t1,3,3)

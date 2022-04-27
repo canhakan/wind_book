@@ -1,8 +1,0 @@
-# Dimension Reduction (incomplete)
-
-Here we will compare different dimension reduction techniques on 6 different stations.
-
-```{r}
-
-```
-
