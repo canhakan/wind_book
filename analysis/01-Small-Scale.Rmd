@@ -1,4 +1,4 @@
-# Small Scale Example
+# Small Scale Part 1: Full Models
 
 **Relationship between: Wind Speed and Energy Production of Wind Turbines**
 
